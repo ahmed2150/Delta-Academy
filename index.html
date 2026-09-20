@@ -1,0 +1,1973 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معهد الدلتا العالي لنظم المعلومات الإدارية والمحاسبية بالمنصورة</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        delta: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#075985',
+                            800: '#0c4a6e',
+                            900: '#0a324d',
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8fafc;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .chat-bubble-me {
+            border-radius: 18px 18px 2px 18px;
+        }
+        .chat-bubble-other {
+            border-radius: 18px 18px 18px 2px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between selection:bg-delta-200 selection:text-delta-900">
+
+    <!-- Header Area -->
+    <header class="bg-white border-b border-delta-100 shadow-sm sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
+                
+                <!-- Logo & Institute Title -->
+                <div class="flex items-center gap-4 cursor-pointer" onclick="app.navigateToHome()">
+                    <div class="relative w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-delta-500 to-delta-800 rounded-2xl flex items-center justify-center text-white shadow-md shadow-delta-200 group transition-transform hover:scale-105">
+                        <i class="fa-solid fa-graduation-cap text-2xl"></i>
+                        <span class="absolute -bottom-1 -right-1 bg-white text-delta-600 text-[10px] font-black px-1.5 py-0.5 rounded-md border border-delta-200 shadow-xs">DELTA</span>
+                    </div>
+                    <div>
+                        <h1 class="text-base sm:text-xl font-black text-delta-900 leading-tight">
+                            معهد الدلتا العالي
+                        </h1>
+                        <p class="text-xs sm:text-sm font-semibold text-delta-600">
+                            لنظم المعلومات الإدارية والمحاسبية بالمنصورة
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Main Navigation Tabs -->
+                <div id="main-nav-tabs" class="hidden sm:flex items-center gap-1.5 bg-slate-100 p-1.5 rounded-2xl border border-slate-200 text-xs font-bold">
+                    <button onclick="app.switchTab('home')" id="nav-tab-home" class="px-3.5 py-2 rounded-xl transition">
+                        <i class="fa-solid fa-house ml-1.5"></i> الرئيسية والمواد
+                    </button>
+                    <button onclick="app.switchTab('announcements')" id="nav-tab-announcements" class="px-3.5 py-2 rounded-xl transition relative">
+                        <i class="fa-solid fa-bullhorn ml-1.5"></i> الإعلانات والمقالات
+                    </button>
+                    <button onclick="app.switchTab('group_chats')" id="nav-tab-group_chats" class="px-3.5 py-2 rounded-xl transition">
+                        <i class="fa-solid fa-comments ml-1.5"></i> الشات الجماعي
+                    </button>
+                    <button onclick="app.switchTab('direct_messages')" id="nav-tab-direct_messages" class="px-3.5 py-2 rounded-xl transition">
+                        <i class="fa-solid fa-paper-plane ml-1.5"></i> تواصل دكتور
+                    </button>
+                </div>
+
+                <!-- Quick Cloud Storage Button & Auth Controls -->
+                <div class="flex items-center gap-2.5 w-full lg:w-auto justify-end">
+                    <a href="https://drive.google.com/drive/folders/1E_h14-it2xPXbvEdgfRq40mr169tR7ud?usp=sharing" 
+                       target="_blank" rel="noopener noreferrer" 
+                       class="hidden md:inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white text-xs font-bold px-3.5 py-2.5 rounded-xl shadow-xs transition hover:shadow">
+                        <i class="fa-brands fa-google-drive text-sm"></i>
+                        <span>المجلد السحابي</span>
+                    </a>
+
+                    <div id="nav-user-container">
+                        <!-- Dynamic Auth Badge Injected via JS -->
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Mobile Navigation Bar -->
+            <div class="sm:hidden flex items-center justify-around mt-3 pt-2 border-t border-slate-100 text-[11px] font-bold">
+                <button onclick="app.switchTab('home')" id="mob-tab-home" class="py-1.5 px-2 rounded-lg">
+                    <i class="fa-solid fa-house"></i> المواد
+                </button>
+                <button onclick="app.switchTab('announcements')" id="mob-tab-announcements" class="py-1.5 px-2 rounded-lg">
+                    <i class="fa-solid fa-bullhorn"></i> الإعلانات
+                </button>
+                <button onclick="app.switchTab('group_chats')" id="mob-tab-group_chats" class="py-1.5 px-2 rounded-lg">
+                    <i class="fa-solid fa-comments"></i> الجروبات
+                </button>
+                <button onclick="app.switchTab('direct_messages')" id="mob-tab-direct_messages" class="py-1.5 px-2 rounded-lg">
+                    <i class="fa-solid fa-paper-plane"></i> تواصل
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full">
+        
+        <!-- Welcome Banner -->
+        <div id="welcome-banner" class="mb-6 bg-gradient-to-r from-delta-800 via-delta-700 to-sky-600 rounded-3xl p-6 sm:p-8 text-white shadow-lg shadow-delta-200/50 relative overflow-hidden">
+            <div class="absolute -left-10 -bottom-10 opacity-10 pointer-events-none">
+                <i class="fa-solid fa-university text-[220px]"></i>
+            </div>
+            <div class="relative z-10 max-w-3xl flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div>
+                    <div id="banner-role-badge" class="mb-2 inline-block">
+                        <span class="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-md">
+                            منظومة التواصل والأكاديميا الرسمية 🎓
+                        </span>
+                    </div>
+                    <h2 class="text-xl sm:text-3xl font-extrabold mb-2" id="banner-title">
+                        أهلاً بك في منصة معهد الدلتا العالي بالمنصورة
+                    </h2>
+                    <p class="text-delta-100 text-xs sm:text-sm leading-relaxed" id="banner-subtitle">
+                        تواصل مباشر بين الطلاب وأعضاء هيئة التدريس، رفع المحاضرات ومتابعة الإعلانات الرسمية أولاً بأول.
+                    </p>
+                </div>
+
+                <!-- Drive and Script buttons inside banner for mobile/quick access -->
+                <div class="flex flex-wrap gap-2 pt-2 md:pt-0">
+                    <a href="https://drive.google.com/drive/folders/1E_h14-it2xPXbvEdgfRq40mr169tR7ud?usp=sharing" target="_blank" 
+                       class="bg-white/10 hover:bg-white/20 border border-white/30 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition flex items-center gap-2 backdrop-blur-xs">
+                        <i class="fa-brands fa-google-drive text-amber-300"></i>
+                        <span>مجلد المرفقات السحابي</span>
+                    </a>
+                    <a href="https://script.google.com/macros/s/AKfycbx8466ouFDvIGz2qBU4yH0BdnW_Zgs-JcBL8osUMtt5flajM-gHH51gfz3M3lMd5V5fag/exec" target="_blank" 
+                       class="bg-sky-500 hover:bg-sky-400 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition flex items-center gap-2 shadow-xs">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <span>الخدمة الرقمية WebApp</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Dynamic View Canvas -->
+        <div id="main-view" class="transition-all duration-300">
+            <!-- Content injected dynamically via JS -->
+        </div>
+
+    </main>
+
+    <!-- Footer Area -->
+    <footer class="bg-white border-t border-delta-100 mt-12 py-8 text-slate-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                
+                <!-- Mandatory Link 1 -->
+                <div class="bg-delta-50/70 border border-delta-100 rounded-2xl p-5 hover:border-delta-300 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-2 text-delta-800 font-bold">
+                            <div class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center text-sm shadow-xs">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </div>
+                            <span class="text-sm">إدارة الدعم الأكاديمي</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-4">
+                            معهد الدلتا العالي نظم للحاسبات بالمنصورة - التواصل المباشر والمتابعة الأكاديمية
+                        </p>
+                    </div>
+                    <a href="https://www.facebook.com/share/g/1MKBprx4Xu/" target="_blank" rel="noopener noreferrer" 
+                       class="inline-flex items-center justify-center gap-2 bg-delta-600 hover:bg-delta-700 text-white text-xs font-bold py-2.5 px-4 rounded-xl transition shadow-sm hover:shadow">
+                        <span>اضغط هنا</span>
+                        <i class="fa-solid fa-arrow-left text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- Mandatory Link 2 -->
+                <div class="bg-delta-50/70 border border-delta-100 rounded-2xl p-5 hover:border-delta-300 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-2 text-delta-800 font-bold">
+                            <div class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center text-sm shadow-xs">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </div>
+                            <span class="text-sm">شئون الطلاب</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-4">
+                            شئون الطلاب الدلتا نظم المعلومات الإدارية والمحاسبية - الجداول والأوراق والخدمات
+                        </p>
+                    </div>
+                    <a href="https://www.facebook.com/share/g/1CELDTqVbf/" target="_blank" rel="noopener noreferrer" 
+                       class="inline-flex items-center justify-center gap-2 bg-delta-600 hover:bg-delta-700 text-white text-xs font-bold py-2.5 px-4 rounded-xl transition shadow-sm hover:shadow">
+                        <span>اضغط هنا</span>
+                        <i class="fa-solid fa-arrow-left text-[10px]"></i>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="border-t border-slate-100 pt-4 text-center text-xs text-slate-400">
+                جميع الحقوق محفوظة &copy; 2026 معهد الدلتا العالي لنظم المعلومات الإدارية والمحاسبية بالمنصورة
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Authentication & Sign Up Modal -->
+    <div id="auth-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-delta-100 relative my-8 max-h-[90vh] overflow-y-auto custom-scrollbar">
+            
+            <button onclick="app.closeAuthModal()" class="absolute top-5 left-5 text-slate-400 hover:text-slate-600 transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <!-- Modal Header -->
+            <div class="text-center mb-5">
+                <div class="w-12 h-12 bg-delta-100 text-delta-600 rounded-2xl mx-auto flex items-center justify-center text-xl mb-2">
+                    <i class="fa-solid fa-user-shield" id="auth-modal-icon"></i>
+                </div>
+                <h3 class="text-xl font-black text-slate-800" id="auth-modal-title">بوابة الدخول للمنظومة</h3>
+                <p class="text-xs text-slate-500 mt-1" id="auth-modal-sub">سجل دخولك أو أنشئ حساباً جديداً للبدء</p>
+            </div>
+
+            <!-- Login / Signup Mode Switcher -->
+            <div class="grid grid-cols-2 gap-1 bg-slate-100 p-1 rounded-2xl mb-5">
+                <button type="button" onclick="app.setAuthMode('login')" id="mode-tab-login" class="py-2 text-xs font-bold rounded-xl transition">
+                    تسجيل الدخول
+                </button>
+                <button type="button" onclick="app.setAuthMode('signup')" id="mode-tab-signup" class="py-2 text-xs font-bold rounded-xl transition">
+                    إنشاء حساب جديد ✨
+                </button>
+            </div>
+
+            <!-- Role Selector Tabs -->
+            <div class="grid grid-cols-3 gap-1 bg-slate-100 p-1.5 rounded-2xl mb-5">
+                <button type="button" onclick="app.setAuthRole('student')" id="role-tab-student" class="py-2 text-xs font-bold rounded-xl transition">
+                    👨‍🎓 طالب
+                </button>
+                <button type="button" onclick="app.setAuthRole('doctor')" id="role-tab-doctor" class="py-2 text-xs font-bold rounded-xl transition">
+                    👨‍🏫 دكتور
+                </button>
+                <button type="button" onclick="app.setAuthRole('staff')" id="role-tab-staff" class="py-2 text-xs font-bold rounded-xl transition">
+                    👔 شئون الطلاب
+                </button>
+            </div>
+
+            <!-- Form -->
+            <form onsubmit="app.handleAuthSubmit(event)" class="space-y-3.5">
+                
+                <!-- Name field (Used for Signup) -->
+                <div id="field-name-container" class="hidden">
+                    <label class="block text-xs font-bold text-slate-700 mb-1">الاسم الكامل (الرباعي)</label>
+                    <div class="relative">
+                        <input type="text" id="auth-name" placeholder="أدخل اسمك كما هو بالمستندات" 
+                               class="w-full pl-3 pr-10 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-delta-500 focus:outline-none transition">
+                        <i class="fa-solid fa-signature absolute right-3.5 top-3.5 text-slate-400 text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- Email Field -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">البريد الإلكتروني</label>
+                    <div class="relative">
+                        <input type="email" id="auth-email" required placeholder="example@delta.edu.eg" 
+                               class="w-full pl-3 pr-10 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-delta-500 focus:outline-none transition">
+                        <i class="fa-solid fa-envelope absolute right-3.5 top-3.5 text-slate-400 text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- Password Field -->
+                <div>
+                    <div class="flex items-center justify-between mb-1">
+                        <label class="block text-xs font-bold text-slate-700">كلمة المرور</label>
+                        <span id="pass-hint" class="text-[10px] text-delta-600 font-medium"></span>
+                    </div>
+                    <div class="relative">
+                        <input type="password" id="auth-password" required placeholder="••••••••" 
+                               class="w-full pl-3 pr-10 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-delta-500 focus:outline-none transition">
+                        <i class="fa-solid fa-key absolute right-3.5 top-3.5 text-slate-400 text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- Student Division Selection Field (Only for Student Signup) -->
+                <div id="field-division-container" class="hidden">
+                    <label class="block text-xs font-bold text-slate-700 mb-1">الفرقة والشعبة الدراسية (للطالب)</label>
+                    <div class="relative">
+                        <select id="auth-division" class="w-full pl-3 pr-10 py-2.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-delta-500 focus:outline-none transition font-semibold text-slate-700">
+                            <option value="div-1">الفرقة الأولى (شعبة عامة)</option>
+                            <option value="div-2">الفرقة الثانية (شعبة عامة)</option>
+                            <option value="div-3-mis">الفرقة الثالثة (تخصص نظم المعلومات الإدارية)</option>
+                            <option value="div-3-acc">الفرقة الثالثة (تخصص المحاسبة والمراجعة)</option>
+                            <option value="div-4-mis">الفرقة الرابعة (بكالوريوس نظم المعلومات)</option>
+                            <option value="div-4-acc">الفرقة الرابعة (بكالوريوس المحاسبة)</option>
+                        </select>
+                        <i class="fa-solid fa-layer-group absolute right-3.5 top-3 text-slate-400 text-xs"></i>
+                    </div>
+                    <p class="text-[10px] text-slate-400 mt-1">سيتحدد مظهر المنظومة والمواد طبقاً للفرقة المختارة.</p>
+                </div>
+
+                <div id="auth-error" class="hidden text-xs text-red-600 bg-red-50 p-2.5 rounded-xl border border-red-100 font-semibold"></div>
+
+                <button type="submit" id="auth-submit-btn" class="w-full bg-delta-600 hover:bg-delta-700 text-white font-bold py-3 rounded-xl transition shadow-md shadow-delta-200 text-xs">
+                    تسجيل الدخول
+                </button>
+            </form>
+
+            <!-- Quick Super Admin Credentials Note -->
+            <div class="mt-5 pt-4 border-t border-slate-100 text-center">
+                <p class="text-[10px] font-bold text-slate-400 mb-1.5">حساب إدارة النظام الفائق (أدمن المعهد):</p>
+                <button type="button" onclick="app.quickSuperAdminFill()" class="text-[10px] bg-amber-50 text-amber-900 hover:bg-amber-100 font-bold px-3 py-1.5 rounded-lg border border-amber-200 transition">
+                    🔑 تعبئة بيانات المدير الفائق (bg522813@gmail.com)
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Generic Modal Container (Add Subject, Announcement, Confirm Delete, etc.) -->
+    <div id="generic-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-delta-100 relative max-h-[90vh] overflow-y-auto custom-scrollbar">
+            <button onclick="app.closeGenericModal()" class="absolute top-5 left-5 text-slate-400 hover:text-slate-600 transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div id="generic-modal-body">
+                <!-- Dynamic Modal Content Injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-700">
+            <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+            <span id="toast-message" class="text-xs font-bold"></span>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * Delta Higher Institute Web Application Engine
+         * Implements Strict Role-Based Access Control, Custom Super Admin & Sign Up Workflows
+         */
+        class DeltaApp {
+            constructor() {
+                // Master Super Admin Credentials
+                this.SUPER_ADMIN_EMAIL = 'bg522813@gmail.com';
+                this.SUPER_ADMIN_PASS = 'dr972005';
+
+                // External Resource URLs
+                this.DRIVE_FOLDER_URL = 'https://drive.google.com/drive/folders/1E_h14-it2xPXbvEdgfRq40mr169tR7ud?usp=sharing';
+                this.WEBAPP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx8466ouFDvIGz2qBU4yH0BdnW_Zgs-JcBL8osUMtt5flajM-gHH51gfz3M3lMd5V5fag/exec';
+
+                // Academic Divisions Definitions
+                this.divisions = [
+                    { id: 'div-1', name: 'الفرقة الأولى', desc: 'شعبة عامة - جميع التخصصات' },
+                    { id: 'div-2', name: 'الفرقة الثانية', desc: 'شعبة عامة - التمهيدي للتخصص' },
+                    { id: 'div-3-mis', name: 'الفرقة الثالثة (نظم)', desc: 'تخصص نظم المعلومات الإدارية' },
+                    { id: 'div-3-acc', name: 'الفرقة الثالثة (محاسبة)', desc: 'تخصص المحاسبة والمراجعة' },
+                    { id: 'div-4-mis', name: 'الفرقة الرابعة (نظم)', desc: 'بكالوريوس نظم المعلومات الإدارية' },
+                    { id: 'div-4-acc', name: 'الفرقة الرابعة (محاسبة)', desc: 'بكالوريوس المحاسبة' }
+                ];
+
+                this.currentUser = null;
+                this.authMode = 'login'; // 'login' or 'signup'
+                this.activeAuthRole = 'student'; // 'student', 'doctor', 'staff'
+                this.currentTab = 'home'; // 'home', 'announcements', 'group_chats', 'direct_messages'
+                
+                this.activeDivisionId = 'div-1';
+                this.activeDirectDoctorName = null;
+
+                this.loadState();
+                this.init();
+            }
+
+            loadState() {
+                // Restore Current User Session
+                const savedUser = localStorage.getItem('delta_user_session_v3');
+                if (savedUser) {
+                    this.currentUser = JSON.parse(savedUser);
+                } else {
+                    this.currentUser = null;
+                }
+
+                // Restore Registered Accounts DB
+                const savedAccounts = localStorage.getItem('delta_registered_accounts_v3');
+                if (savedAccounts) {
+                    this.registeredUsers = JSON.parse(savedAccounts);
+                } else {
+                    this.registeredUsers = [
+                        {
+                            email: 'bg522813@gmail.com',
+                            password: 'dr972005',
+                            name: 'د/ المدير الفائق (أدمن النظام)',
+                            role: 'doctor',
+                            divisionId: 'all',
+                            isSuperAdmin: true
+                        },
+                        {
+                            email: 'doctor.ahmed@delta.edu.eg',
+                            password: 'dr123456',
+                            name: 'أ.د/ أحمد منصور',
+                            role: 'doctor',
+                            divisionId: 'all',
+                            isSuperAdmin: false
+                        },
+                        {
+                            email: 'student.ali@delta.edu.eg',
+                            password: 'std123456',
+                            name: 'علي محمود الجمال',
+                            role: 'student',
+                            divisionId: 'div-1',
+                            isSuperAdmin: false
+                        },
+                        {
+                            email: 'staff.shoon@delta.edu.eg',
+                            password: 'emp123456',
+                            name: 'أحمد سعيد (شئون الطلاب)',
+                            role: 'staff',
+                            divisionId: 'all',
+                            isSuperAdmin: false
+                        }
+                    ];
+                    this.saveRegisteredAccounts();
+                }
+
+                // Load Subjects
+                const savedSubjects = localStorage.getItem('delta_subjects_v3');
+                if (savedSubjects) {
+                    this.subjects = JSON.parse(savedSubjects);
+                } else {
+                    this.subjects = [
+                        {
+                            id: 'sub-101',
+                            divisionId: 'div-1',
+                            name: 'مقدمة في البرمجة وتكنولوجيا المعلومات',
+                            code: 'MIS101',
+                            doctorName: 'أ.د/ أحمد منصور',
+                            lectures: [
+                                {
+                                    id: 'lec-1',
+                                    title: 'المحاضرة الأولى: مفاهيم علوم الحاسب والتشفير',
+                                    desc: 'شرح أساسيات الخوارزميات ولغات البرمجة وشبكات المعلومات.',
+                                    fileName: 'Lecture_1_Fundamentals.pdf',
+                                    driveUrl: this.DRIVE_FOLDER_URL,
+                                    date: '2026-09-10'
+                                }
+                            ],
+                            subjectChat: [
+                                {
+                                    id: 'sc-1',
+                                    senderName: 'الطالبة نورهان أحمد',
+                                    senderRole: 'student',
+                                    text: 'يا دكتور هل الشيت الأول مطلوب المرة القادمة؟',
+                                    time: '10:30 ص'
+                                },
+                                {
+                                    id: 'sc-2',
+                                    senderName: 'أ.د/ أحمد منصور',
+                                    senderRole: 'doctor',
+                                    text: 'نعم يا نورهان، يتم تسليم الشيت الأول في بداية المحاضرة القادمة.',
+                                    time: '10:45 ص'
+                                }
+                            ]
+                        },
+                        {
+                            id: 'sub-102',
+                            divisionId: 'div-1',
+                            name: 'مبادئ المحاسبة المالية (1)',
+                            code: 'ACC101',
+                            doctorName: 'أ.د/ سارة إبراهيم',
+                            lectures: [
+                                {
+                                    id: 'lec-2',
+                                    title: 'المحاضرة الأولى: القوائم المالية ومعادلة الميزانية',
+                                    desc: 'دراسة الأصول والالتزامات وحقوق الملكية.',
+                                    fileName: 'Accounting_Lec1.pdf',
+                                    driveUrl: this.DRIVE_FOLDER_URL,
+                                    date: '2026-09-12'
+                                }
+                            ],
+                            subjectChat: []
+                        },
+                        {
+                            id: 'sub-301',
+                            divisionId: 'div-3-mis',
+                            name: 'تطوير وقواعد البيانات الشبكية',
+                            code: 'MIS302',
+                            doctorName: 'أ.د/ أحمد منصور',
+                            lectures: [
+                                {
+                                    id: 'lec-3',
+                                    title: 'تصميم مخطط العلاقات الهيكلية ERD',
+                                    desc: 'خطوات قواعد البيانات المتقدمة.',
+                                    fileName: 'ERD_Database_Guide.pdf',
+                                    driveUrl: this.DRIVE_FOLDER_URL,
+                                    date: '2026-09-15'
+                                }
+                            ],
+                            subjectChat: []
+                        }
+                    ];
+                    this.saveSubjects();
+                }
+
+                // Load Announcements (Published by Staff or Super Admin)
+                const savedAnnouncements = localStorage.getItem('delta_announcements_v3');
+                if (savedAnnouncements) {
+                    this.announcements = JSON.parse(savedAnnouncements);
+                } else {
+                    this.announcements = [
+                        {
+                            id: 'ann-1',
+                            title: '📢 تنبيه مهم بشأن جداول محاضرات الفصل الدراسي',
+                            content: 'تعلن إدارة شئون الطلاب عن اعتماد جداول المحاضرات لجميع الفرق الدراسية. يرجى التوجه لمراجعة القاعات أو تحميل الجدول المرفق.',
+                            author: 'إدارة شئون الطلاب',
+                            date: '2026-09-18',
+                            category: 'جداول وتنبيهات',
+                            driveUrl: this.DRIVE_FOLDER_URL
+                        },
+                        {
+                            id: 'ann-2',
+                            title: '🎓 فتح باب التسجيل بالأنشطة الطلابية والرياضية',
+                            content: 'تعلن رعاية الشباب عن بدء استقبال طلبات الاشتراك في الأنشطة الثقافية والفنية والرياضية للعام الأكاديمي الحالي.',
+                            author: 'إدارة رعاية الشباب',
+                            date: '2026-09-19',
+                            category: 'أنشطة طلابية',
+                            driveUrl: ''
+                        }
+                    ];
+                    this.saveAnnouncements();
+                }
+
+                // Load Group Chats Lock Status
+                const savedGroupLocks = localStorage.getItem('delta_group_chat_locks_v3');
+                if (savedGroupLocks) {
+                    this.groupChatLocks = JSON.parse(savedGroupLocks);
+                } else {
+                    this.groupChatLocks = {
+                        'div-1': false,
+                        'div-2': false,
+                        'div-3-mis': false,
+                        'div-3-acc': false,
+                        'div-4-mis': false,
+                        'div-4-acc': false
+                    };
+                    this.saveGroupChatLocks();
+                }
+
+                // Load Division Group Messages
+                const savedGroupChats = localStorage.getItem('delta_group_chats_v3');
+                if (savedGroupChats) {
+                    this.groupChats = JSON.parse(savedGroupChats);
+                } else {
+                    this.groupChats = {
+                        'div-1': [
+                            { id: 'gc-1', senderName: 'د/ أحمد منصور', senderRole: 'doctor', text: 'أهلاً بكل طلاب الفرقة الأولى! أي استفسارات تخص المقررات يسعدني الإجابة عنها هنا.', time: '09:00 ص' }
+                        ],
+                        'div-2': [],
+                        'div-3-mis': [],
+                        'div-3-acc': [],
+                        'div-4-mis': [],
+                        'div-4-acc': []
+                    };
+                    this.saveGroupChats();
+                }
+
+                // Load Direct Doctor Messages State
+                const savedDirectMsgs = localStorage.getItem('delta_direct_msgs_v3');
+                if (savedDirectMsgs) {
+                    this.directMessages = JSON.parse(savedDirectMsgs);
+                } else {
+                    this.directMessages = [
+                        {
+                            id: 'dm-1',
+                            doctorName: 'أ.د/ أحمد منصور',
+                            studentName: 'علي محمود الجمال',
+                            studentId: 'std-101',
+                            messages: [
+                                { sender: 'student', text: 'السلام عليكم يا دكتور، استفسار بشأن مشروع المادة المقترح.', time: '02:00 م' },
+                                { sender: 'doctor', text: 'وعليكم السلام، مرحباً بك. يمكنك المتابعة معي في الموعد المكتبي.', time: '02:30 م' }
+                            ]
+                        }
+                    ];
+                    this.saveDirectMessages();
+                }
+            }
+
+            saveRegisteredAccounts() {
+                localStorage.setItem('delta_registered_accounts_v3', JSON.stringify(this.registeredUsers));
+            }
+
+            saveSubjects() {
+                localStorage.setItem('delta_subjects_v3', JSON.stringify(this.subjects));
+            }
+
+            saveAnnouncements() {
+                localStorage.setItem('delta_announcements_v3', JSON.stringify(this.announcements));
+            }
+
+            saveGroupChatLocks() {
+                localStorage.setItem('delta_group_chat_locks_v3', JSON.stringify(this.groupChatLocks));
+            }
+
+            saveGroupChats() {
+                localStorage.setItem('delta_group_chats_v3', JSON.stringify(this.groupChats));
+            }
+
+            saveDirectMessages() {
+                localStorage.setItem('delta_direct_msgs_v3', JSON.stringify(this.directMessages));
+            }
+
+            init() {
+                this.renderHeaderNav();
+                this.switchTab(this.currentTab);
+            }
+
+            navigateToHome() {
+                this.switchTab('home');
+            }
+
+            switchTab(tabName) {
+                this.currentTab = tabName;
+                this.updateTabStyles();
+                this.renderView();
+            }
+
+            updateTabStyles() {
+                const tabs = ['home', 'announcements', 'group_chats', 'direct_messages'];
+                tabs.forEach(tab => {
+                    const desktopEl = document.getElementById(`nav-tab-${tab}`);
+                    const mobEl = document.getElementById(`mob-tab-${tab}`);
+                    
+                    const activeClass = 'bg-delta-600 text-white shadow-xs';
+                    const inactiveClass = 'text-slate-600 hover:text-delta-700 hover:bg-slate-200/60';
+
+                    if (desktopEl) {
+                        desktopEl.className = `px-3.5 py-2 rounded-xl transition ${this.currentTab === tab ? activeClass : inactiveClass}`;
+                    }
+                    if (mobEl) {
+                        mobEl.className = `py-1.5 px-2 rounded-lg transition ${this.currentTab === tab ? 'bg-delta-600 text-white font-bold' : 'text-slate-600'}`;
+                    }
+                });
+            }
+
+            renderHeaderNav() {
+                const navContainer = document.getElementById('nav-user-container');
+                if (this.currentUser) {
+                    let roleBadge = 'bg-emerald-100 text-emerald-800 border-emerald-200';
+                    let roleTitle = 'طالب بالمعهد';
+
+                    if (this.currentUser.isSuperAdmin) {
+                        roleBadge = 'bg-gradient-to-r from-amber-500 to-red-600 text-white border-amber-300 font-black shadow-xs';
+                        roleTitle = '⚡ المدير الفائق (أدمن النظام)';
+                    } else if (this.currentUser.role === 'doctor') {
+                        roleBadge = 'bg-amber-100 text-amber-900 border-amber-200';
+                        roleTitle = 'عضو هيئة تدريس';
+                    } else if (this.currentUser.role === 'staff') {
+                        roleBadge = 'bg-purple-100 text-purple-900 border-purple-200';
+                        roleTitle = 'إداري / شئون طلاب';
+                    }
+
+                    navContainer.innerHTML = `
+                        <div class="flex items-center gap-3">
+                            <div class="text-right">
+                                <div class="text-xs font-black text-slate-800 line-clamp-1">${this.currentUser.name}</div>
+                                <span class="text-[9px] font-bold px-2 py-0.5 rounded-full border ${roleBadge} inline-block mt-0.5">
+                                    ${roleTitle}
+                                </span>
+                            </div>
+                            <button onclick="app.logout()" class="bg-slate-100 hover:bg-red-50 text-slate-600 hover:text-red-600 p-2.5 rounded-xl border border-slate-200 transition" title="تسجيل الخروج">
+                                <i class="fa-solid fa-right-from-bracket text-xs"></i>
+                            </button>
+                        </div>
+                    `;
+                } else {
+                    navContainer.innerHTML = `
+                        <div class="flex items-center gap-2">
+                            <button onclick="app.openAuthModal('login')" class="bg-delta-600 hover:bg-delta-700 text-white text-xs font-bold py-2.5 px-3.5 rounded-xl shadow-xs transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-right-to-bracket"></i>
+                                <span>تسجيل الدخول</span>
+                            </button>
+                            <button onclick="app.openAuthModal('signup')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-2.5 px-3.5 rounded-xl shadow-xs transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-user-plus"></i>
+                                <span>حساب جديد</span>
+                            </button>
+                        </div>
+                    `;
+                }
+            }
+
+            renderView() {
+                const mainView = document.getElementById('main-view');
+                const bannerTitle = document.getElementById('banner-title');
+                const bannerSubtitle = document.getElementById('banner-subtitle');
+
+                if (!this.currentUser) {
+                    bannerTitle.textContent = 'أهلاً بك في المنظومة الأكاديمية لمعهد الدلتا العالي';
+                    bannerSubtitle.textContent = 'قم بتسجيل الدخول أو إنشاء حساب جديد للوصول للمواد المقررة، الإعلانات، والشات الجماعي.';
+                    mainView.innerHTML = this.renderUnauthenticatedView();
+                    return;
+                }
+
+                // Super Admin / Doctor / Staff / Student customized headers
+                if (this.currentTab === 'home') {
+                    if (this.currentUser.isSuperAdmin) {
+                        bannerTitle.textContent = `مرحباً بك أدمن النظام: ${this.currentUser.name}`;
+                        bannerSubtitle.textContent = 'تمتلك صلاحية فائق لكافة الفرق، التعديل والحذف، وإغلاق أو فتح الجروبات الجماعية.';
+                    } else if (this.currentUser.role === 'student') {
+                        const stdDiv = this.divisions.find(d => d.id === this.currentUser.divisionId) || this.divisions[0];
+                        bannerTitle.textContent = `مرحباً بك الطالب/ ${this.currentUser.name}`;
+                        bannerSubtitle.textContent = `معروض أمامك مواد المقررة لـ (${stdDiv.name}) التي أنشأها الأطباء.`;
+                    } else if (this.currentUser.role === 'doctor') {
+                        bannerTitle.textContent = `مرحباً دكتور/ ${this.currentUser.name}`;
+                        bannerSubtitle.textContent = 'معروض أمامك جميع الفرق الدراسية. يمكنك إضافة المواد، رفع المحاضرات وتعديل الملفات.';
+                    } else if (this.currentUser.role === 'staff') {
+                        bannerTitle.textContent = `مرحباً أستاذ/ ${this.currentUser.name} (شئون الطلاب)`;
+                        bannerSubtitle.textContent = 'تتركز صلاحياتك في متابعة وإضافة إعلانات ومقالات المعهد للطلاب.';
+                    }
+
+                    mainView.innerHTML = this.renderHomeView();
+                } else if (this.currentTab === 'announcements') {
+                    bannerTitle.textContent = '📢 إعلانات ومقالات معهد الدلتا العالي';
+                    bannerSubtitle.textContent = 'تابع الأنشطة والمستجدات والجداول الرسمية المنشورة من قبل إدارة وشئون الطلاب.';
+                    mainView.innerHTML = this.renderAnnouncementsView();
+                } else if (this.currentTab === 'group_chats') {
+                    bannerTitle.textContent = '💬 الشات الجماعي للفرق الدراسية';
+                    bannerSubtitle.textContent = 'غرف تواصل لتبادل النقاشات الأكاديمية (يمكن للمدير الفائق غلق الشات إذا لزم الأمر).';
+                    mainView.innerHTML = this.renderDivisionGroupChatView();
+                } else if (this.currentTab === 'direct_messages') {
+                    bannerTitle.textContent = '✉️ التواصل المباشر مع أساتذة المواد';
+                    bannerSubtitle.textContent = 'مساحة خاصة لإرسال الاستفسارات المباشرة إلى دكتور المادة تلقائياً.';
+                    mainView.innerHTML = this.renderDirectMessagesView();
+                }
+            }
+
+            renderUnauthenticatedView() {
+                return `
+                    <div class="bg-white rounded-3xl p-8 sm:p-12 border border-delta-100 shadow-sm text-center my-4">
+                        <div class="max-w-lg mx-auto space-y-4">
+                            <div class="w-20 h-20 bg-delta-50 text-delta-600 rounded-3xl flex items-center justify-center text-3xl mx-auto shadow-inner">
+                                <i class="fa-solid fa-lock"></i>
+                            </div>
+                            <h3 class="text-2xl font-black text-slate-800">سجل دخولك أو أنشئ حساباً انضماماً للمنظومة</h3>
+                            <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
+                                يتيح لك النظام استعراض المواد والمحاضرات الخاصة بفرقتك الدراسية، والتواصل الفوري مع أعضاء هيئة التدريس.
+                            </p>
+                            <div class="pt-4 flex flex-col sm:flex-row gap-3 justify-center">
+                                <button onclick="app.openAuthModal('signup')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-3 px-6 rounded-xl transition shadow-md flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-user-plus"></i>
+                                    <span>إنشاء حساب جديد (طالب / دكتور / شئون)</span>
+                                </button>
+                                <button onclick="app.openAuthModal('login')" class="bg-delta-600 hover:bg-delta-700 text-white font-bold text-xs py-3 px-6 rounded-xl transition shadow-md flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-right-to-bracket"></i>
+                                    <span>تسجيل الدخول بالحساب الحالي</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            renderHomeView() {
+                const isStudent = this.currentUser.role === 'student' && !this.currentUser.isSuperAdmin;
+                const isDoctor = (this.currentUser.role === 'doctor' || this.currentUser.isSuperAdmin);
+                const isSuperAdmin = this.currentUser.isSuperAdmin;
+
+                // If user is STUDENT -> Display ONLY their selected division & its subjects
+                if (isStudent) {
+                    const studentDiv = this.divisions.find(d => d.id === this.currentUser.divisionId) || this.divisions[0];
+                    const divSubjects = this.subjects.filter(s => s.divisionId === studentDiv.id);
+
+                    return `
+                        <div class="space-y-6">
+                            <div class="bg-white rounded-3xl border border-delta-200 p-6 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-14 h-14 rounded-2xl bg-delta-600 text-white flex items-center justify-center text-2xl font-black shadow-md">
+                                        <i class="fa-solid fa-graduation-cap"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs text-delta-600 font-bold">فرقتك الدراسية المخصصة:</span>
+                                        <h3 class="text-xl font-black text-slate-800">${studentDiv.name}</h3>
+                                        <p class="text-xs text-slate-500">${studentDiv.desc}</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <button onclick="app.openDivisionChat('${studentDiv.id}')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-2.5 px-4 rounded-xl transition shadow-sm flex items-center gap-2">
+                                        <i class="fa-solid fa-comments"></i>
+                                        <span>الشات الجماعي لفرقتك</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <h4 class="text-base font-black text-slate-800 flex items-center gap-2">
+                                    <i class="fa-solid fa-book-bookmark text-delta-600"></i>
+                                    المواد والمحاضرات الدراسية لفرقتك (${divSubjects.length})
+                                </h4>
+                            </div>
+
+                            ${this.renderSubjectsListMarkup(divSubjects, false)}
+                        </div>
+                    `;
+                }
+
+                // If user is DOCTOR or SUPER ADMIN or STAFF -> Display ALL divisions
+                return `
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-black text-slate-800 flex items-center gap-2">
+                                <i class="fa-solid fa-layer-group text-delta-500"></i>
+                                الفرق الدراسية بالمعهد (إجمالي 6 فرق)
+                            </h3>
+                            ${isDoctor ? `
+                                <span class="bg-amber-100 text-amber-900 text-xs font-bold px-3 py-1 rounded-full border border-amber-200">
+                                    يمكنك الإضافة والتعديل والحذف لكافة الفرق
+                                </span>
+                            ` : ''}
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            ${this.divisions.map(div => {
+                                const divSubjects = this.subjects.filter(s => s.divisionId === div.id);
+                                const chatCount = (this.groupChats[div.id] || []).length;
+                                const isLocked = this.groupChatLocks[div.id];
+
+                                return `
+                                    <div class="bg-white border border-slate-200 hover:border-delta-400 rounded-3xl p-6 shadow-xs hover:shadow-xl transition-all flex flex-col justify-between group relative overflow-hidden">
+                                        <div>
+                                            <div class="flex items-center justify-between mb-4">
+                                                <div class="w-12 h-12 rounded-2xl bg-delta-50 text-delta-600 group-hover:bg-delta-600 group-hover:text-white flex items-center justify-center text-lg transition duration-300">
+                                                    <i class="fa-solid fa-shapes"></i>
+                                                </div>
+                                                <span class="bg-slate-100 group-hover:bg-delta-100 group-hover:text-delta-800 text-slate-600 text-[11px] font-bold px-3 py-1 rounded-full transition">
+                                                    ${divSubjects.length} مواد مضافة
+                                                </span>
+                                            </div>
+
+                                            <h4 class="text-lg font-black text-slate-800 group-hover:text-delta-700 transition mb-1">
+                                                ${div.name}
+                                            </h4>
+                                            <p class="text-xs text-slate-500 mb-6">
+                                                ${div.desc}
+                                            </p>
+                                        </div>
+
+                                        <div class="pt-4 border-t border-slate-100 space-y-2">
+                                            <button onclick="app.openDivisionSubjects('${div.id}')" class="w-full bg-delta-50 hover:bg-delta-600 text-delta-700 hover:text-white text-xs font-bold py-2.5 px-4 rounded-xl transition flex items-center justify-between">
+                                                <span>استعراض وإدارة المواد</span>
+                                                <i class="fa-solid fa-book"></i>
+                                            </button>
+                                            
+                                            <div class="flex items-center gap-2">
+                                                <button onclick="app.openDivisionChat('${div.id}')" class="flex-grow bg-emerald-50 hover:bg-emerald-600 text-emerald-700 hover:text-white text-xs font-bold py-2.5 px-4 rounded-xl transition flex items-center justify-between">
+                                                    <span>الشات الجماعي (${chatCount})</span>
+                                                    <i class="fa-solid ${isLocked ? 'fa-lock text-red-500' : 'fa-comments'}"></i>
+                                                </button>
+
+                                                ${isSuperAdmin ? `
+                                                    <button onclick="app.toggleGroupChatLock('${div.id}')" class="px-3 py-2.5 rounded-xl border text-xs font-bold transition ${isLocked ? 'bg-red-500 text-white border-red-600 hover:bg-red-600' : 'bg-slate-100 text-slate-700 border-slate-200 hover:bg-slate-200'}" title="${isLocked ? 'الشات مغلق - اضغط للفتح' : 'الشات مفتوح - اضغط للغلق'}">
+                                                        <i class="fa-solid ${isLocked ? 'fa-lock' : 'fa-lock-open'}"></i>
+                                                    </button>
+                                                ` : ''}
+                                            </div>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            openDivisionSubjects(divId) {
+                this.activeDivisionId = divId;
+                const div = this.divisions.find(d => d.id === divId);
+                const divisionSubjects = this.subjects.filter(s => s.divisionId === divId);
+                const canManage = (this.currentUser.role === 'doctor' || this.currentUser.isSuperAdmin);
+
+                let html = `
+                    <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
+                        <button onclick="app.renderView()" class="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-delta-600 bg-white border border-slate-200 px-4 py-2.5 rounded-xl transition shadow-2xs">
+                            <i class="fa-solid fa-arrow-right"></i>
+                            <span>العودة لجميع الفرق</span>
+                        </button>
+
+                        <div class="flex items-center gap-2">
+                            <button onclick="app.openDivisionChat('${divId}')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-2.5 px-4 rounded-xl transition shadow-md flex items-center gap-2">
+                                <i class="fa-solid fa-comments"></i>
+                                <span>دخول شات ${div ? div.name : ''}</span>
+                            </button>
+                            ${canManage ? `
+                                <button onclick="app.openAddSubjectModal('${divId}')" class="bg-delta-600 hover:bg-delta-700 text-white text-xs font-bold py-2.5 px-4 rounded-xl transition shadow-md flex items-center gap-2">
+                                    <i class="fa-solid fa-plus"></i>
+                                    <span>إضافة مادة لهذه الفرقة</span>
+                                </button>
+                            ` : ''}
+                        </div>
+                    </div>
+
+                    <div class="mb-4 bg-white p-4 rounded-2xl border border-slate-200 flex items-center justify-between">
+                        <div>
+                            <h3 class="text-lg font-black text-slate-800">${div ? div.name : ''}</h3>
+                            <p class="text-xs text-slate-500">${div ? div.desc : ''}</p>
+                        </div>
+                        <span class="bg-delta-50 text-delta-700 text-xs font-bold px-3 py-1 rounded-full border border-delta-100">
+                            ${divisionSubjects.length} مواد مضافة
+                        </span>
+                    </div>
+
+                    ${this.renderSubjectsListMarkup(divisionSubjects, canManage)}
+                `;
+
+                document.getElementById('main-view').innerHTML = html;
+            }
+
+            renderSubjectsListMarkup(divisionSubjects, canManage) {
+                const isSuperAdmin = this.currentUser && this.currentUser.isSuperAdmin;
+
+                if (divisionSubjects.length === 0) {
+                    return `
+                        <div class="bg-white rounded-3xl p-12 text-center border border-slate-200">
+                            <i class="fa-solid fa-folder-open text-4xl text-slate-300 mb-3"></i>
+                            <h4 class="text-sm font-bold text-slate-600">لا توجد مواد مضافة لهذه الفرقة بعد</h4>
+                            ${canManage ? `<p class="text-xs text-slate-400 mt-1">يمكنك كعضو هيئة تدريس ضغط زِر إضافة مادة للبدء.</p>` : ''}
+                        </div>
+                    `;
+                }
+
+                return `
+                    <div class="space-y-6">
+                        ${divisionSubjects.map(subject => `
+                            <div class="bg-white rounded-3xl border border-slate-200/80 shadow-xs overflow-hidden">
+                                
+                                <!-- Subject Header -->
+                                <div class="bg-slate-50/80 p-5 border-b border-slate-200/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-xl bg-delta-600 text-white font-bold flex items-center justify-center text-xs shadow-xs">
+                                            ${subject.code || 'مادة'}
+                                        </div>
+                                        <div>
+                                            <h4 class="text-base font-black text-slate-800">${subject.name}</h4>
+                                            <p class="text-xs text-slate-500 font-semibold">أستاذ المادة: ${subject.doctorName}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-center gap-2 flex-wrap">
+                                        <button onclick="app.startDirectMessageWithDoctor('${subject.doctorName}')" class="bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold py-2 px-3 rounded-xl transition flex items-center gap-1.5 shadow-2xs">
+                                            <i class="fa-solid fa-paper-plane"></i>
+                                            <span>تواصل خاص مع الدكتور</span>
+                                        </button>
+
+                                        ${canManage ? `
+                                            <button onclick="app.openAddLectureModal('${subject.id}')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-2 px-3 rounded-xl transition flex items-center gap-1.5 shadow-2xs">
+                                                <i class="fa-solid fa-file-arrow-up"></i>
+                                                <span>رفع محاضرة</span>
+                                            </button>
+                                        ` : ''}
+
+                                        ${isSuperAdmin || canManage ? `
+                                            <button onclick="app.confirmDeleteSubject('${subject.id}')" class="bg-red-50 hover:bg-red-100 text-red-600 text-xs font-bold py-2 px-3 rounded-xl border border-red-200 transition" title="حذف المادة">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        ` : ''}
+                                    </div>
+                                </div>
+
+                                <!-- Lectures Grid & Discussion -->
+                                <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                                    
+                                    <!-- Lectures List -->
+                                    <div>
+                                        <div class="flex items-center justify-between mb-3">
+                                            <h5 class="text-xs font-extrabold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+                                                <i class="fa-solid fa-file-pdf text-red-500"></i> المحاضرات المرفوعة (${subject.lectures.length})
+                                            </h5>
+                                            <a href="${this.DRIVE_FOLDER_URL}" target="_blank" class="text-[10px] text-amber-700 hover:underline font-bold flex items-center gap-1">
+                                                <i class="fa-brands fa-google-drive"></i>
+                                                <span>المجلد السحابي الكامل</span>
+                                            </a>
+                                        </div>
+
+                                        ${subject.lectures.length === 0 ? `
+                                            <p class="text-xs text-slate-400 italic py-4 bg-slate-50 rounded-2xl text-center border border-dashed border-slate-200">
+                                                لا توجد محاضرات مرفوعة لهذه المادة بعد.
+                                            </p>
+                                        ` : `
+                                            <div class="space-y-3">
+                                                ${subject.lectures.map(lec => `
+                                                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 flex items-center justify-between gap-2">
+                                                        <div>
+                                                            <h6 class="text-xs font-bold text-slate-800">${lec.title}</h6>
+                                                            <p class="text-[10px] text-slate-500 mt-0.5 line-clamp-1">${lec.desc || 'ملف المحاضرة المرفق'}</p>
+                                                            <span class="text-[9px] text-slate-400 mt-1 inline-block">${lec.date}</span>
+                                                        </div>
+                                                        <div class="flex items-center gap-1">
+                                                            <a href="${lec.driveUrl || this.DRIVE_FOLDER_URL}" target="_blank" class="text-xs font-bold text-delta-600 hover:text-delta-800 bg-white border border-slate-200 px-3 py-1.5 rounded-lg transition flex items-center gap-1 shadow-2xs">
+                                                                <i class="fa-solid fa-download"></i>
+                                                                <span>تحميل</span>
+                                                            </a>
+                                                            ${(isSuperAdmin || canManage) ? `
+                                                                <button onclick="app.deleteLecture('${subject.id}', '${lec.id}')" class="text-xs text-red-500 hover:text-red-700 p-1.5 transition" title="حذف المحاضرة">
+                                                                    <i class="fa-solid fa-xmark"></i>
+                                                                </button>
+                                                            ` : ''}
+                                                        </div>
+                                                    </div>
+                                                `).join('')}
+                                            </div>
+                                        `}
+                                    </div>
+
+                                    <!-- Subject Discussion Box -->
+                                    <div class="bg-slate-50/70 rounded-2xl p-4 border border-slate-200 flex flex-col justify-between h-72">
+                                        <h5 class="text-xs font-extrabold text-sky-800 uppercase mb-2 flex items-center gap-1.5">
+                                            <i class="fa-solid fa-comments"></i> غرفة مناقشة المادة (أسئلة واستفسارات)
+                                        </h5>
+                                        
+                                        <div class="flex-grow overflow-y-auto custom-scrollbar space-y-2 pr-1 mb-2">
+                                            ${(subject.subjectChat || []).length === 0 ? `
+                                                <p class="text-[11px] text-slate-400 text-center py-6">لا توجد مناقشات بعد. اطرح سؤالك لأستاذ المادة الآن!</p>
+                                            ` : (subject.subjectChat || []).map(msg => `
+                                                <div class="bg-white p-2.5 rounded-xl border border-slate-100 text-xs shadow-2xs relative group">
+                                                    <div class="flex items-center justify-between mb-1">
+                                                        <span class="font-bold ${msg.senderRole === 'doctor' ? 'text-amber-800' : 'text-slate-800'} text-[11px]">${msg.senderName}</span>
+                                                        <span class="text-[9px] text-slate-400">${msg.time}</span>
+                                                    </div>
+                                                    <p class="text-slate-600 text-[11px] leading-relaxed">${msg.text}</p>
+                                                    ${isSuperAdmin ? `
+                                                        <button onclick="app.deleteSubjectChatMessage('${subject.id}', '${msg.id}')" class="absolute left-2 bottom-1.5 text-[10px] text-red-400 hover:text-red-600 opacity-0 group-hover:opacity-100 transition">
+                                                            حذف
+                                                        </button>
+                                                    ` : ''}
+                                                </div>
+                                            `).join('')}
+                                        </div>
+
+                                        <form onsubmit="app.sendSubjectChatMessage(event, '${subject.id}')" class="flex gap-2">
+                                            <input type="text" id="sub-chat-input-${subject.id}" placeholder="اكتب سؤالك بخصوص المادة..." required
+                                                   class="flex-grow text-xs px-3 py-2.5 bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-delta-500 shadow-2xs">
+                                            <button type="submit" class="bg-delta-600 text-white text-xs px-3.5 py-2.5 rounded-xl font-bold hover:bg-delta-700 transition shadow-xs">
+                                                إرسال
+                                            </button>
+                                        </form>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+
+            renderAnnouncementsView() {
+                const canPublish = (this.currentUser.role === 'staff' || this.currentUser.isSuperAdmin);
+                const isSuperAdmin = this.currentUser.isSuperAdmin;
+
+                return `
+                    <div class="space-y-6">
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-slate-200 shadow-xs">
+                            <div>
+                                <h3 class="text-lg font-black text-slate-800 flex items-center gap-2">
+                                    <i class="fa-solid fa-bullhorn text-amber-500"></i>
+                                    إعلانات ومقالات المعهد الرسمية
+                                </h3>
+                                <p class="text-xs text-slate-500 mt-0.5">تصدر عن شئون الطلاب وإدارة المعهد لمتابعة القرارات والجداول</p>
+                            </div>
+
+                            ${canPublish ? `
+                                <button onclick="app.openAddAnnouncementModal()" class="bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold py-2.5 px-4 rounded-xl shadow-md transition flex items-center gap-2">
+                                    <i class="fa-solid fa-plus"></i>
+                                    <span>تنزيل إعلان / مقال جديد</span>
+                                </button>
+                            ` : ''}
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            ${this.announcements.length === 0 ? `
+                                <div class="col-span-2 bg-white rounded-3xl p-12 text-center border border-slate-200">
+                                    <i class="fa-solid fa-newspaper text-4xl text-slate-300 mb-2"></i>
+                                    <p class="text-xs font-bold text-slate-500">لا توجد إعلانات منشورة حالياً.</p>
+                                </div>
+                            ` : this.announcements.map(ann => `
+                                <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-xs flex flex-col justify-between hover:shadow-md transition">
+                                    <div>
+                                        <div class="flex items-center justify-between mb-3">
+                                            <span class="bg-purple-50 text-purple-700 text-[10px] font-extrabold px-3 py-1 rounded-full border border-purple-100">
+                                                ${ann.category || 'إعلان رسمي'}
+                                            </span>
+                                            <span class="text-[10px] font-semibold text-slate-400">${ann.date}</span>
+                                        </div>
+
+                                        <h4 class="text-base font-black text-slate-800 mb-2 leading-snug">${ann.title}</h4>
+                                        <p class="text-xs text-slate-600 leading-relaxed mb-4">${ann.content}</p>
+                                    </div>
+
+                                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+                                        <span class="font-bold text-slate-500 text-[11px]">
+                                            <i class="fa-solid fa-user-pen text-purple-500 ml-1"></i> ${ann.author}
+                                        </span>
+
+                                        <div class="flex items-center gap-2">
+                                            ${ann.driveUrl ? `
+                                                <a href="${ann.driveUrl}" target="_blank" class="bg-amber-50 text-amber-800 text-[11px] font-bold px-3 py-1.5 rounded-lg border border-amber-200 hover:bg-amber-100 transition flex items-center gap-1">
+                                                    <i class="fa-brands fa-google-drive"></i>
+                                                    <span>المرفق السحابي</span>
+                                                </a>
+                                            ` : ''}
+
+                                            ${(canPublish || isSuperAdmin) ? `
+                                                <button onclick="app.deleteAnnouncement('${ann.id}')" class="text-red-500 hover:text-red-700 p-1 transition" title="حذف الإعلان">
+                                                    <i class="fa-solid fa-trash-can"></i>
+                                                </button>
+                                            ` : ''}
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            renderDivisionGroupChatView() {
+                const activeDiv = this.divisions.find(d => d.id === this.activeDivisionId) || this.divisions[0];
+                const messages = this.groupChats[activeDiv.id] || [];
+                const isLocked = this.groupChatLocks[activeDiv.id] || false;
+                const isSuperAdmin = this.currentUser && this.currentUser.isSuperAdmin;
+
+                return `
+                    <div class="bg-white rounded-3xl border border-slate-200/80 shadow-md overflow-hidden grid grid-cols-1 lg:grid-cols-4 min-h-[550px]">
+                        
+                        <!-- Divisions Sidebar -->
+                        <div class="lg:col-span-1 bg-slate-50 border-b lg:border-b-0 lg:border-l border-slate-200 p-4 space-y-2">
+                            <h4 class="text-xs font-extrabold text-slate-400 uppercase tracking-wider mb-3">اختر الشات الجماعي:</h4>
+                            ${this.divisions.map(div => {
+                                const isActive = div.id === activeDiv.id;
+                                const count = (this.groupChats[div.id] || []).length;
+                                const divLocked = this.groupChatLocks[div.id];
+
+                                return `
+                                    <button onclick="app.selectDivisionChat('${div.id}')" class="w-full text-right p-3 rounded-2xl transition flex items-center justify-between ${isActive ? 'bg-emerald-600 text-white shadow-sm font-bold' : 'hover:bg-slate-200/60 text-slate-700 text-xs'}">
+                                        <div class="flex items-center gap-2">
+                                            <i class="fa-solid ${divLocked ? 'fa-lock text-red-300' : 'fa-users'} text-xs"></i>
+                                            <span class="text-xs">${div.name}</span>
+                                        </div>
+                                        <span class="text-[10px] px-2 py-0.5 rounded-full ${isActive ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-600'}">${count}</span>
+                                    </button>
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <!-- Chat Messages Area -->
+                        <div class="lg:col-span-3 flex flex-col justify-between bg-slate-50/30 p-4 sm:p-6">
+                            
+                            <!-- Chat Header -->
+                            <div class="flex items-center justify-between pb-4 border-b border-slate-200/80 mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-2xl ${isLocked ? 'bg-red-100 text-red-700' : 'bg-emerald-100 text-emerald-700'} flex items-center justify-center font-bold text-lg">
+                                        <i class="fa-solid ${isLocked ? 'fa-lock' : 'fa-comments'}"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-base font-black text-slate-800">جروب ${activeDiv.name}</h4>
+                                        <span class="text-xs text-slate-500">${activeDiv.desc}</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-2">
+                                    <span class="text-[10px] font-bold px-3 py-1 rounded-full ${isLocked ? 'bg-red-100 text-red-800' : 'bg-emerald-100 text-emerald-800'}">
+                                        ${isLocked ? '🔒 الشات مغلق حالياً' : '🟢 الشات مفتوح'}
+                                    </span>
+
+                                    ${isSuperAdmin ? `
+                                        <button onclick="app.toggleGroupChatLock('${activeDiv.id}')" class="bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold px-3 py-1.5 rounded-xl transition shadow-xs flex items-center gap-1">
+                                            <i class="fa-solid ${isLocked ? 'fa-lock-open' : 'fa-lock'}"></i>
+                                            <span>${isLocked ? 'تفعيل الشات' : 'غلق الشات'}</span>
+                                        </button>
+                                    ` : ''}
+                                </div>
+                            </div>
+
+                            <!-- Messages Container -->
+                            <div id="division-chat-box" class="flex-grow overflow-y-auto custom-scrollbar space-y-3 p-2 max-h-[380px]">
+                                ${messages.length === 0 ? `
+                                    <div class="text-center py-16 text-slate-400">
+                                        <i class="fa-solid fa-comments text-4xl mb-2 opacity-50"></i>
+                                        <p class="text-xs">لا توجد رسائل سابقة في شات ${activeDiv.name}. كن أول من يرسل مشاركة!</p>
+                                    </div>
+                                ` : messages.map(msg => {
+                                    const isMe = this.currentUser && msg.senderName.includes(this.currentUser.name.split(' ')[0]);
+                                    let badgeColor = 'bg-slate-200 text-slate-700';
+                                    if (msg.senderRole === 'doctor') badgeColor = 'bg-amber-100 text-amber-900';
+                                    if (msg.senderRole === 'staff') badgeColor = 'bg-purple-100 text-purple-900';
+
+                                    return `
+                                        <div class="flex flex-col ${isMe ? 'items-end' : 'items-start'} space-y-1 group relative">
+                                            <div class="flex items-center gap-2 text-[10px] text-slate-400 px-1">
+                                                <span class="font-bold text-slate-700">${msg.senderName}</span>
+                                                <span class="px-1.5 py-0.2 rounded-full text-[9px] ${badgeColor}">${this.getRoleLabel(msg.senderRole)}</span>
+                                                <span>• ${msg.time}</span>
+                                            </div>
+                                            <div class="p-3.5 max-w-lg text-xs leading-relaxed ${isMe ? 'bg-emerald-600 text-white chat-bubble-me shadow-xs' : 'bg-white text-slate-800 border border-slate-200 chat-bubble-other shadow-2xs'}">
+                                                ${msg.text}
+                                            </div>
+                                            ${isSuperAdmin ? `
+                                                <button onclick="app.deleteDivisionChatMessage('${activeDiv.id}', '${msg.id}')" class="text-[9px] text-red-500 hover:underline opacity-0 group-hover:opacity-100 transition px-1">
+                                                    حذف الرسالة
+                                                </button>
+                                            ` : ''}
+                                        </div>
+                                    `;
+                                }).join('')}
+                            </div>
+
+                            <!-- Input Bar -->
+                            ${isLocked && !isSuperAdmin ? `
+                                <div class="mt-4 p-3.5 bg-red-50 border border-red-200 text-red-700 text-xs font-bold rounded-2xl text-center">
+                                    <i class="fa-solid fa-lock ml-1"></i>
+                                    تم إغلاق المشاركات في هذا الشات الجماعي بواسطة إدارة المعهد.
+                                </div>
+                            ` : `
+                                <form onsubmit="app.sendDivisionChatMessage(event, '${activeDiv.id}')" class="mt-4 pt-3 border-t border-slate-200 flex gap-2">
+                                    <input type="text" id="division-chat-input" placeholder="اكتب مشاركتك في شات ${activeDiv.name}..." required
+                                           class="flex-grow text-xs sm:text-sm px-4 py-3 bg-white border border-slate-200 rounded-2xl focus:outline-none focus:border-emerald-500 shadow-2xs">
+                                    <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-3 rounded-2xl transition text-xs flex items-center gap-2 shadow-md">
+                                        <span>إرسال</span>
+                                        <i class="fa-solid fa-paper-plane"></i>
+                                    </button>
+                                </form>
+                            `}
+
+                        </div>
+
+                    </div>
+                `;
+            }
+
+            toggleGroupChatLock(divId) {
+                if (!this.currentUser || !this.currentUser.isSuperAdmin) return;
+                this.groupChatLocks[divId] = !this.groupChatLocks[divId];
+                this.saveGroupChatLocks();
+                this.renderView();
+                this.showToast(this.groupChatLocks[divId] ? 'تم إغلاق الشات الجماعي للفرقة.' : 'تم فتح الشات الجماعي للفرقة.');
+            }
+
+            deleteDivisionChatMessage(divId, msgId) {
+                if (!this.currentUser || !this.currentUser.isSuperAdmin) return;
+                this.groupChats[divId] = (this.groupChats[divId] || []).filter(m => m.id !== msgId);
+                this.saveGroupChats();
+                this.renderView();
+                this.showToast('تم حذف الرسالة بنجاح.');
+            }
+
+            selectDivisionChat(divId) {
+                this.activeDivisionId = divId;
+                this.renderView();
+                this.scrollToChatBottom('division-chat-box');
+            }
+
+            openDivisionChat(divId) {
+                this.activeDivisionId = divId;
+                this.switchTab('group_chats');
+            }
+
+            sendDivisionChatMessage(e, divId) {
+                e.preventDefault();
+                const input = document.getElementById('division-chat-input');
+                const text = input.value.trim();
+                if (!text || !this.currentUser) return;
+
+                if (this.groupChatLocks[divId] && !this.currentUser.isSuperAdmin) {
+                    this.showToast('عذراً، الشات مغلق حالياً من قِبل إدارة المعهد.');
+                    return;
+                }
+
+                if (!this.groupChats[divId]) this.groupChats[divId] = [];
+
+                const newMsg = {
+                    id: 'gc-' + Date.now(),
+                    senderName: this.currentUser.name,
+                    senderRole: this.currentUser.role,
+                    text: text,
+                    time: new Date().toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })
+                };
+
+                this.groupChats[divId].push(newMsg);
+                this.saveGroupChats();
+                input.value = '';
+                this.renderView();
+                this.scrollToChatBottom('division-chat-box');
+                this.showToast('تمت إضافة رسالتك للشات الجماعي.');
+            }
+
+            renderDirectMessagesView() {
+                const isDoctor = (this.currentUser.role === 'doctor' || this.currentUser.isSuperAdmin);
+
+                let userDMs = this.directMessages;
+                if (!this.currentUser.isSuperAdmin) {
+                    if (isDoctor) {
+                        userDMs = this.directMessages.filter(dm => dm.doctorName.includes(this.currentUser.name.split(' ')[0]) || true);
+                    } else {
+                        userDMs = this.directMessages.filter(dm => dm.studentId === this.currentUser.id || true);
+                    }
+                }
+
+                const activeDM = userDMs.find(d => d.doctorName === this.activeDirectDoctorName) || userDMs[0];
+
+                return `
+                    <div class="bg-white rounded-3xl border border-slate-200/80 shadow-md overflow-hidden grid grid-cols-1 lg:grid-cols-4 min-h-[550px]">
+                        
+                        <!-- Conversations List -->
+                        <div class="lg:col-span-1 bg-slate-50 border-b lg:border-b-0 lg:border-l border-slate-200 p-4 space-y-2">
+                            <div class="flex items-center justify-between mb-3">
+                                <h4 class="text-xs font-extrabold text-slate-400 uppercase tracking-wider">المحادثات المباشرة:</h4>
+                                <button onclick="app.openNewDoctorDMModal()" class="text-[11px] bg-sky-100 text-sky-800 font-bold px-2 py-1 rounded-lg hover:bg-sky-200 transition">
+                                    + رسالة جديدة
+                                </button>
+                            </div>
+
+                            ${userDMs.length === 0 ? `
+                                <p class="text-xs text-slate-400 py-4 text-center">لا توجد رسائل سابقة. اضغط رسالة جديدة للتواصل مع دكتور المادة.</p>
+                            ` : userDMs.map(dm => {
+                                const isActive = activeDM && activeDM.id === dm.id;
+                                const lastMsg = dm.messages[dm.messages.length - 1];
+                                return `
+                                    <button onclick="app.selectDirectDM('${dm.doctorName}')" class="w-full text-right p-3 rounded-2xl transition ${isActive ? 'bg-sky-600 text-white shadow-sm' : 'hover:bg-slate-200/60 text-slate-700 bg-white border border-slate-100'}">
+                                        <div class="font-bold text-xs mb-1 line-clamp-1">${isDoctor ? dm.studentName : dm.doctorName}</div>
+                                        <div class="text-[10px] ${isActive ? 'text-sky-100' : 'text-slate-400'} line-clamp-1">
+                                            ${lastMsg ? lastMsg.text : 'بدء المحادثة...'}
+                                        </div>
+                                    </button>
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <!-- Active Conversation Area -->
+                        <div class="lg:col-span-3 flex flex-col justify-between bg-slate-50/20 p-4 sm:p-6">
+                            ${!activeDM ? `
+                                <div class="flex flex-col items-center justify-center h-full text-slate-400 py-16">
+                                    <i class="fa-solid fa-paper-plane text-5xl mb-3 text-sky-300"></i>
+                                    <h4 class="text-sm font-bold text-slate-700">تواصل مباشر وخاص مع أستاذ المادة</h4>
+                                    <p class="text-xs mt-1">اختر محادثة من القائمة أو ابدأ رسالة جديدة مع أستاذك.</p>
+                                    <button onclick="app.openNewDoctorDMModal()" class="mt-4 bg-sky-600 text-white text-xs font-bold px-5 py-2.5 rounded-xl shadow-md hover:bg-sky-700 transition">
+                                        تواصل مع دكتور الآن
+                                    </button>
+                                </div>
+                            ` : `
+                                <div>
+                                    <!-- DM Header -->
+                                    <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-4">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-2xl bg-sky-100 text-sky-700 flex items-center justify-center font-bold text-lg">
+                                                <i class="fa-solid fa-user-doctor"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-base font-black text-slate-800">${isDoctor ? activeDM.studentName : activeDM.doctorName}</h4>
+                                                <span class="text-xs text-slate-500">رسائل مباشرة واستفسارات أكاديمية</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- DM Messages List -->
+                                    <div id="dm-chat-box" class="overflow-y-auto custom-scrollbar space-y-3 p-2 h-[350px]">
+                                        ${activeDM.messages.map(m => {
+                                            const isMyMsg = (isDoctor && m.sender === 'doctor') || (!isDoctor && m.sender === 'student');
+                                            return `
+                                                <div class="flex flex-col ${isMyMsg ? 'items-end' : 'items-start'} space-y-1">
+                                                    <span class="text-[9px] text-slate-400 px-1">${m.time}</span>
+                                                    <div class="p-3.5 max-w-lg text-xs leading-relaxed ${isMyMsg ? 'bg-sky-600 text-white chat-bubble-me' : 'bg-white text-slate-800 border border-slate-200 chat-bubble-other'}">
+                                                        ${m.text}
+                                                    </div>
+                                                </div>
+                                            `;
+                                        }).join('')}
+                                    </div>
+                                </div>
+
+                                <!-- DM Input -->
+                                <form onsubmit="app.sendDirectMessage(event, '${activeDM.id}')" class="mt-4 pt-3 border-t border-slate-200 flex gap-2">
+                                    <input type="text" id="dm-input-text" placeholder="اكتب استفسارك المباشر هنا..." required
+                                           class="flex-grow text-xs sm:text-sm px-4 py-3 bg-white border border-slate-200 rounded-2xl focus:outline-none focus:border-sky-500 shadow-2xs">
+                                    <button type="submit" class="bg-sky-600 hover:bg-sky-700 text-white font-bold px-5 py-3 rounded-2xl transition text-xs flex items-center gap-2 shadow-md">
+                                        <span>إرسال</span>
+                                        <i class="fa-solid fa-paper-plane"></i>
+                                    </button>
+                                </form>
+                            `}
+                        </div>
+
+                    </div>
+                `;
+            }
+
+            selectDirectDM(doctorName) {
+                this.activeDirectDoctorName = doctorName;
+                this.renderView();
+                this.scrollToChatBottom('dm-chat-box');
+            }
+
+            startDirectMessageWithDoctor(doctorName) {
+                this.activeDirectDoctorName = doctorName;
+                let dm = this.directMessages.find(d => d.doctorName === doctorName);
+                if (!dm) {
+                    dm = {
+                        id: 'dm-' + Date.now(),
+                        doctorName: doctorName,
+                        studentName: this.currentUser ? this.currentUser.name : 'طالب بالمعهد',
+                        studentId: this.currentUser ? this.currentUser.id : 'std-guest',
+                        messages: [
+                            { sender: 'student', text: `مرحباً دكتور، أود الاستفسار بخصوص مقرر المادة.`, time: new Date().toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' }) }
+                        ]
+                    };
+                    this.directMessages.unshift(dm);
+                    this.saveDirectMessages();
+                }
+                this.switchTab('direct_messages');
+            }
+
+            openNewDoctorDMModal() {
+                const doctorsList = ['أ.د/ أحمد منصور', 'أ.د/ سارة إبراهيم', 'د/ محمود عبد اللطيف'];
+                const body = document.getElementById('generic-modal-body');
+                body.innerHTML = `
+                    <h3 class="text-lg font-black text-slate-800 mb-4">تواصل مع أستاذ المادة</h3>
+                    <form onsubmit="app.handleStartNewDM(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">اختر أستاذ المادة</label>
+                            <select id="dm-doctor-select" class="w-full px-3 py-2.5 text-xs border border-slate-200 rounded-xl focus:outline-none focus:border-sky-500 font-bold text-slate-700">
+                                ${doctorsList.map(doc => `<option value="${doc}">${doc}</option>`).join('')}
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">نص الاستفسار والرسالة</label>
+                            <textarea id="dm-first-msg" rows="3" required placeholder="اكتب سؤالك ليصل مباشرة للأستاذ..."
+                                      class="w-full px-3 py-2.5 text-xs border border-slate-200 rounded-xl focus:outline-none focus:border-sky-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-2.5 rounded-xl transition text-xs shadow-md">
+                            إرسال الرسالة
+                        </button>
+                    </form>
+                `;
+                document.getElementById('generic-modal').classList.remove('hidden');
+            }
+
+            handleStartNewDM(e) {
+                e.preventDefault();
+                const docName = document.getElementById('dm-doctor-select').value;
+                const firstMsg = document.getElementById('dm-first-msg').value.trim();
+
+                let dm = this.directMessages.find(d => d.doctorName === docName);
+                if (!dm) {
+                    dm = {
+                        id: 'dm-' + Date.now(),
+                        doctorName: docName,
+                        studentName: this.currentUser ? this.currentUser.name : 'طالب بالمعهد',
+                        studentId: this.currentUser ? this.currentUser.id : 'std-guest',
+                        messages: []
+                    };
+                    this.directMessages.unshift(dm);
+                }
+
+                dm.messages.push({
+                    sender: (this.currentUser.role === 'doctor' || this.currentUser.isSuperAdmin) ? 'doctor' : 'student',
+                    text: firstMsg,
+                    time: new Date().toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })
+                });
+
+                this.saveDirectMessages();
+                this.closeGenericModal();
+                this.activeDirectDoctorName = docName;
+                this.switchTab('direct_messages');
+                this.showToast('تم إرسال رسالتك لدكتور المادة بنجاح.');
+            }
+
+            sendDirectMessage(e, dmId) {
+                e.preventDefault();
+                const input = document.getElementById('dm-input-text');
+                const text = input.value.trim();
+                if (!text) return;
+
+                const dm = this.directMessages.find(d => d.id === dmId);
+                if (dm) {
+                    const isDoc = (this.currentUser.role === 'doctor' || this.currentUser.isSuperAdmin);
+                    dm.messages.push({
+                        sender: isDoc ? 'doctor' : 'student',
+                        text: text,
+                        time: new Date().toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })
+                    });
+
+                    this.saveDirectMessages();
+                    input.value = '';
+                    this.renderView();
+                    this.scrollToChatBottom('dm-chat-box');
+                }
+            }
+
+            sendSubjectChatMessage(e, subjectId) {
+                e.preventDefault();
+                const input = document.getElementById(`sub-chat-input-${subjectId}`);
+                const text = input.value.trim();
+                if (!text || !this.currentUser) return;
+
+                const subject = this.subjects.find(s => s.id === subjectId);
+                if (subject) {
+                    if (!subject.subjectChat) subject.subjectChat = [];
+                    subject.subjectChat.push({
+                        id: 'sc-' + Date.now(),
+                        senderName: this.currentUser.name,
+                        senderRole: this.currentUser.role,
+                        text: text,
+                        time: new Date().toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })
+                    });
+                    this.saveSubjects();
+                    input.value = '';
+                    this.openDivisionSubjects(this.activeDivisionId);
+                    this.showToast('تمت إضافتها لمناقشة المادة.');
+                }
+            }
+
+            deleteSubjectChatMessage(subjectId, msgId) {
+                if (!this.currentUser || !this.currentUser.isSuperAdmin) return;
+                const subject = this.subjects.find(s => s.id === subjectId);
+                if (subject && subject.subjectChat) {
+                    subject.subjectChat = subject.subjectChat.filter(m => m.id !== msgId);
+                    this.saveSubjects();
+                    this.openDivisionSubjects(this.activeDivisionId);
+                    this.showToast('تم حذف السؤال.');
+                }
+            }
+
+            // Auth Modal Controls
+            openAuthModal(mode = 'login') {
+                this.authMode = mode;
+                this.updateAuthModalUI();
+                document.getElementById('auth-modal').classList.remove('hidden');
+                document.getElementById('auth-error').classList.add('hidden');
+            }
+
+            closeAuthModal() {
+                document.getElementById('auth-modal').classList.add('hidden');
+            }
+
+            setAuthMode(mode) {
+                this.authMode = mode;
+                this.updateAuthModalUI();
+            }
+
+            setAuthRole(role) {
+                this.activeAuthRole = role;
+                this.updateAuthModalUI();
+            }
+
+            updateAuthModalUI() {
+                const loginTab = document.getElementById('mode-tab-login');
+                const signupTab = document.getElementById('mode-tab-signup');
+
+                const doctorTab = document.getElementById('role-tab-doctor');
+                const studentTab = document.getElementById('role-tab-student');
+                const staffTab = document.getElementById('role-tab-staff');
+
+                const nameContainer = document.getElementById('field-name-container');
+                const divContainer = document.getElementById('field-division-container');
+                const modalTitle = document.getElementById('auth-modal-title');
+                const modalSub = document.getElementById('auth-modal-sub');
+                const submitBtn = document.getElementById('auth-submit-btn');
+
+                const activeClass = 'bg-white text-delta-800 shadow-xs border border-slate-200';
+                const inactiveClass = 'text-slate-500 hover:text-slate-800';
+
+                loginTab.className = `py-2 text-xs font-bold rounded-xl transition ${this.authMode === 'login' ? activeClass : inactiveClass}`;
+                signupTab.className = `py-2 text-xs font-bold rounded-xl transition ${this.authMode === 'signup' ? activeClass : inactiveClass}`;
+
+                doctorTab.className = `py-2 text-xs font-bold rounded-xl transition ${this.activeAuthRole === 'doctor' ? activeClass : inactiveClass}`;
+                studentTab.className = `py-2 text-xs font-bold rounded-xl transition ${this.activeAuthRole === 'student' ? activeClass : inactiveClass}`;
+                staffTab.className = `py-2 text-xs font-bold rounded-xl transition ${this.activeAuthRole === 'staff' ? activeClass : inactiveClass}`;
+
+                if (this.authMode === 'signup') {
+                    modalTitle.textContent = 'إنشاء حساب جديد بالمنظومة';
+                    modalSub.textContent = 'أدخل اسمك وبياناتك للإنضمام كـ ' + this.getRoleLabel(this.activeAuthRole);
+                    submitBtn.textContent = 'إنشاء الحساب والتسجيل';
+                    nameContainer.classList.remove('hidden');
+                    
+                    // Show Division selection ONLY if role is student
+                    if (this.activeAuthRole === 'student') {
+                        divContainer.classList.remove('hidden');
+                    } else {
+                        divContainer.classList.add('hidden');
+                    }
+                } else {
+                    modalTitle.textContent = 'تسجيل الدخول للمنظومة';
+                    modalSub.textContent = 'أدخل البريد الإلكتروني وكلمة المرور الخاصة بحسابك';
+                    submitBtn.textContent = 'تسجيل الدخول';
+                    nameContainer.classList.add('hidden');
+                    divContainer.classList.add('hidden');
+                }
+            }
+
+            quickSuperAdminFill() {
+                this.setAuthMode('login');
+                document.getElementById('auth-email').value = this.SUPER_ADMIN_EMAIL;
+                document.getElementById('auth-password').value = this.SUPER_ADMIN_PASS;
+                this.setAuthRole('doctor');
+            }
+
+            handleAuthSubmit(e) {
+                e.preventDefault();
+                const email = document.getElementById('auth-email').value.trim().toLowerCase();
+                const password = document.getElementById('auth-password').value;
+                const name = document.getElementById('auth-name').value.trim();
+                const divisionId = document.getElementById('auth-division').value;
+                const errorDiv = document.getElementById('auth-error');
+
+                errorDiv.classList.add('hidden');
+
+                // Check for Super Admin Credentials Special Key
+                const isSuperAdminMatch = (email === this.SUPER_ADMIN_EMAIL.toLowerCase() && password === this.SUPER_ADMIN_PASS);
+
+                if (this.authMode === 'signup') {
+                    // Sign Up Workflow
+                    if (!name) {
+                        errorDiv.textContent = 'يرجى كتابة الاسم الكامل أولاً.';
+                        errorDiv.classList.remove('hidden');
+                        return;
+                    }
+
+                    // Check if email already registered
+                    const existing = this.registeredUsers.find(u => u.email.toLowerCase() === email);
+                    if (existing && !isSuperAdminMatch) {
+                        errorDiv.textContent = 'هذا البريد الإلكتروني مسجل بالفعل! يمكنك الدخول به مباشرة.';
+                        errorDiv.classList.remove('hidden');
+                        return;
+                    }
+
+                    const newAccount = {
+                        email: email,
+                        password: password,
+                        name: isSuperAdminMatch ? 'د/ المدير الفائق (أدمن النظام)' : name,
+                        role: isSuperAdminMatch ? 'doctor' : this.activeAuthRole,
+                        divisionId: this.activeAuthRole === 'student' ? divisionId : 'all',
+                        isSuperAdmin: isSuperAdminMatch,
+                        id: 'usr-' + Date.now()
+                    };
+
+                    this.registeredUsers.push(newAccount);
+                    this.saveRegisteredAccounts();
+
+                    this.currentUser = newAccount;
+                    localStorage.setItem('delta_user_session_v3', JSON.stringify(this.currentUser));
+                    
+                    this.closeAuthModal();
+                    this.renderHeaderNav();
+                    this.renderView();
+                    this.showToast(`تم إنشاء حسابك بنجاح! مرحباً بك ${this.currentUser.name}`);
+
+                } else {
+                    // Login Workflow
+                    let userAccount = this.registeredUsers.find(u => u.email.toLowerCase() === email && u.password === password);
+
+                    if (isSuperAdminMatch) {
+                        userAccount = {
+                            email: this.SUPER_ADMIN_EMAIL,
+                            password: this.SUPER_ADMIN_PASS,
+                            name: 'د/ المدير الفائق (أدمن النظام)',
+                            role: 'doctor',
+                            divisionId: 'all',
+                            isSuperAdmin: true,
+                            id: 'usr-superadmin'
+                        };
+                    }
+
+                    if (!userAccount) {
+                        errorDiv.textContent = 'بيانات الدخول غير صحيحة. يرجى التأكد من البريد وكلمة المرور أو أنشئ حساب جديد.';
+                        errorDiv.classList.remove('hidden');
+                        return;
+                    }
+
+                    this.currentUser = userAccount;
+                    localStorage.setItem('delta_user_session_v3', JSON.stringify(this.currentUser));
+
+                    this.closeAuthModal();
+                    this.renderHeaderNav();
+                    this.renderView();
+                    this.showToast(`تم تسجيل الدخول بنجاح! أهلاً بك ${this.currentUser.name}`);
+                }
+            }
+
+            logout() {
+                this.currentUser = null;
+                localStorage.removeItem('delta_user_session_v3');
+                this.renderHeaderNav();
+                this.renderView();
+                this.showToast('تم تسجيل الخروج بنجاح.');
+            }
+
+            getRoleLabel(role) {
+                if (role === 'doctor') return 'عضو هيئة تدريس';
+                if (role === 'student') return 'طالب بالمعهد';
+                if (role === 'staff') return 'إداري / شئون طلاب';
+                return '';
+            }
+
+            // Academic Actions
+            openAddSubjectModal(divId) {
+                const body = document.getElementById('generic-modal-body');
+                body.innerHTML = `
+                    <h3 class="text-lg font-black text-slate-800 mb-4">إضافة مادة تعليمية جديدة للفرقة</h3>
+                    <form onsubmit="app.handleAddSubject(event, '${divId}')" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">اسم المادة الدراسية</label>
+                            <input type="text" id="new-sub-name" required placeholder="مثال: تحليل وتصميم قواعد البيانات"
+                                   class="w-full px-3 py-2.5 text-xs border border-slate-200 rounded-xl focus:border-delta-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">كود المادة</label>
+                            <input type="text" id="new-sub-code" placeholder="MIS308" required
+                                   class="w-full px-3 py-2.5 text-xs border border-slate-200 rounded-xl focus:border-delta-500 focus:outline-none">
+                        </div>
+                        <button type="submit" class="w-full bg-delta-600 hover:bg-delta-700 text-white font-bold py-2.5 rounded-xl transition text-xs shadow-md">
+                            حفظ وتنزيل المادة
+                        </button>
+                    </form>
+                `;
+                document.getElementById('generic-modal').classList.remove('hidden');
+            }
+
+            handleAddSubject(e, divId) {
+                e.preventDefault();
+                const name = document.getElementById('new-sub-name').value.trim();
+                const code = document.getElementById('new-sub-code').value.trim();
+
+                this.subjects.push({
+                    id: 'sub-' + Date.now(),
+                    divisionId: divId,
+                    name: name,
+                    code: code,
+                    doctorName: this.currentUser ? this.currentUser.name : 'أستاذ المادة',
+                    lectures: [],
+                    subjectChat: []
+                });
+
+                this.saveSubjects();
+                this.closeGenericModal();
+                this.openDivisionSubjects(divId);
+                this.showToast('تمت إضافة المادة بنجاح.');
+            }
+
+            confirmDeleteSubject(subjectId) {
+                const subject = this.subjects.find(s => s.id === subjectId);
+                if (!subject) return;
+
+                const body = document.getElementById('generic-modal-body');
+                body.innerHTML = `
+                    <div class="text-center py-2 space-y-4">
+                        <div class="w-12 h-12 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center text-xl mx-auto">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                        <h3 class="text-lg font-black text-slate-800">تأكيد حذف المادة؟</h3>
+                        <p class="text-xs text-slate-500">هل أنت أكتأكد من حذف المادة "${subject.name}" وكافة المحاضرات التابعة لها؟ لا يمكن التراجع عن هذا الإجراء.</p>
+                        
+                        <div class="flex gap-2 pt-2">
+                            <button onclick="app.executeDeleteSubject('${subjectId}')" class="flex-grow bg-red-600 hover:bg-red-700 text-white text-xs font-bold py-2.5 rounded-xl transition">
+                                نعم، حذف المادة
+                            </button>
+                            <button onclick="app.closeGenericModal()" class="flex-grow bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold py-2.5 rounded-xl transition">
+                                إلغاء
+                            </button>
+                        </div>
+                    </div>
+                `;
+                document.getElementById('generic-modal').classList.remove('hidden');
+            }
+
+            executeDeleteSubject(subjectId) {
+                this.subjects = this.subjects.filter(s => s.id !== subjectId);
+                this.saveSubjects();
+                this.closeGenericModal();
+                this.openDivisionSubjects(this.activeDivisionId);
+                this.showToast('تم حذف المادة بالكامل.');
+            }
+
+            openAddLectureModal(subjectId) {
+                const body = document.getElementById('generic-modal-body');
+                body.innerHTML = `
+                    <h3 class="text-lg font-black text-slate-800 mb-4">رفع ملف محاضرة جديد</h3>
+                    <form onsubmit="app.handleAddLecture(event, '${subjectId}')" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">عنوان المحاضرة</label>
+                            <input type="text" id="lec-title" required placeholder="مثال: المحاضرة الثالثة: القوائم المالية"
+                                   class="w-full px-3 py-2.5 text-xs border border-slate-200 rounded-xl focus:border-delta-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">الوصف والتفاصيل</label>
+                            <input type="text" id="lec-desc" placeholder="ملخص العناصر المذكورة بالمحاضرة..."
+                                   class="w-full px-3 py-2.5 text-xs border border-slate-200 rounded-xl focus:border-delta-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">رابط المرفق على Google Drive (اختياري)</label>
+                            <input type="url" id="lec-drive" placeholder="${this.DRIVE_FOLDER_URL}"
+                                   class="w-full px-3 py-2.5 text-xs border border-slate-200 rounded-xl focus:border-delta-500 focus:outline-none">
+                        </div>
+                        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl transition text-xs shadow-md">
+                            رفع وإتاحة للطلاب
+                        </button>
+                    </form>
+                `;
+                document.getElementById('generic-modal').classList.remove('hidden');
+            }
+
+            handleAddLecture(e, subjectId) {
+                e.preventDefault();
+                const title = document.getElementById('lec-title').value.trim();
+                const desc = document.getElementById('lec-desc').value.trim();
+                const drive = document.getElementById('lec-drive').value.trim() || this.DRIVE_FOLDER_URL;
+
+                const subject = this.subjects.find(s => s.id === subjectId);
+                if (subject) {
+                    subject.lectures.push({
+                        id: 'lec-' + Date.now(),
+                        title: title,
+                        desc: desc,
+                        driveUrl: drive,
+                        date: new Date().toISOString().split('T')[0]
+                    });
+                    this.saveSubjects();
+                    this.closeGenericModal();
+                    this.openDivisionSubjects(this.activeDivisionId);
+                    this.showToast('تمت إضافة المحاضرة بنجاح.');
+                }
+            }
+
+            deleteLecture(subjectId, lecId) {
+                const subject = this.subjects.find(s => s.id === subjectId);
+                if (subject) {
+                    subject.lectures = subject.lectures.filter(l => l.id !== lecId);
+                    this.saveSubjects();
+                    this.openDivisionSubjects(this.activeDivisionId);
+                    this.showToast('تم حذف المحاضرة.');
+                }
+            }
+
+            // Announcements Management
+            openAddAnnouncementModal() {
+                const body = document.getElementById('generic-modal-body');
+                body.innerHTML = `
+                    <h3 class="text-lg font-black text-slate-800 mb-4">نشر إعلان / مقال جديد للمعهد</h3>
+                    <form onsubmit="app.handleAddAnnouncement(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">عنوان الإعلان</label>
+                            <input type="text" id="ann-title" required placeholder="مثال: تنبيه بخصوص موعد الامتحانات الشفهية"
+                                   class="w-full px-3 py-2.5 text-xs border border-slate-200 rounded-xl focus:border-purple-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">تصنيف الإعلان</label>
+                            <input type="text" id="ann-cat" placeholder="جداول وتنبيهات / شئون طلاب"
+                                   class="w-full px-3 py-2.5 text-xs border border-slate-200 rounded-xl focus:border-purple-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">تفاصيل ومحتوى المقال</label>
+                            <textarea id="ann-content" rows="4" required placeholder="اكتب التفاصيل الكاملة المنشورة من قبل الإدارة..."
+                                      class="w-full px-3 py-2.5 text-xs border border-slate-200 rounded-xl focus:border-purple-500 focus:outline-none"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">رابط ملف المرفق (Google Drive)</label>
+                            <input type="url" id="ann-drive" placeholder="${this.DRIVE_FOLDER_URL}"
+                                   class="w-full px-3 py-2.5 text-xs border border-slate-200 rounded-xl focus:border-purple-500 focus:outline-none">
+                        </div>
+                        <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2.5 rounded-xl transition text-xs shadow-md">
+                            تنزيل الإعلان رسمياً
+                        </button>
+                    </form>
+                `;
+                document.getElementById('generic-modal').classList.remove('hidden');
+            }
+
+            handleAddAnnouncement(e) {
+                e.preventDefault();
+                const title = document.getElementById('ann-title').value.trim();
+                const cat = document.getElementById('ann-cat').value.trim() || 'إعلان رسمي';
+                const content = document.getElementById('ann-content').value.trim();
+                const drive = document.getElementById('ann-drive').value.trim();
+
+                this.announcements.unshift({
+                    id: 'ann-' + Date.now(),
+                    title: title,
+                    category: cat,
+                    content: content,
+                    author: this.currentUser ? this.currentUser.name : 'شئون الطلاب',
+                    date: new Date().toISOString().split('T')[0],
+                    driveUrl: drive
+                });
+
+                this.saveAnnouncements();
+                this.closeGenericModal();
+                this.switchTab('announcements');
+                this.showToast('تم نشر الإعلان بنجاح.');
+            }
+
+            deleteAnnouncement(annId) {
+                this.announcements = this.announcements.filter(a => a.id !== annId);
+                this.saveAnnouncements();
+                this.renderView();
+                this.showToast('تم حذف الإعلان.');
+            }
+
+            closeGenericModal() {
+                document.getElementById('generic-modal').classList.add('hidden');
+            }
+
+            scrollToChatBottom(containerId) {
+                setTimeout(() => {
+                    const el = document.getElementById(containerId);
+                    if (el) el.scrollTop = el.scrollHeight;
+                }, 100);
+            }
+
+            showToast(message) {
+                const toast = document.getElementById('toast');
+                const toastMsg = document.getElementById('toast-message');
+                toastMsg.textContent = message;
+
+                toast.classList.remove('translate-y-20', 'opacity-0');
+                toast.classList.add('translate-y-0', 'opacity-100');
+
+                setTimeout(() => {
+                    toast.classList.remove('translate-y-0', 'opacity-100');
+                    toast.classList.add('translate-y-20', 'opacity-0');
+                }, 3500);
+            }
+        }
+
+        let app;
+        window.addEventListener('DOMContentLoaded', () => {
+            app = new DeltaApp();
+        });
+    </script>
+</body>
+</html>
