@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>معهد الدلتا العالي لنظم المعلومات الإدارية والمحاسبية بالمنصورة</title>
 
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -13,103 +12,59 @@
                 extend: {
                     colors: {
                         delta: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            200: '#bae6fd',
-                            300: '#7dd3fc',
-                            400: '#38bdf8',
-                            500: '#0284c7',
-                            600: '#0369a1',
-                            700: '#075985',
-                            800: '#0c4a6e',
-                            900: '#0a324d',
+                            50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd',
+                            300: '#7dd3fc', 400: '#38bdf8', 500: '#0284c7',
+                            600: '#0369a1', 700: '#075985', 800: '#0c4a6e', 900: '#0a324d',
                         }
                     },
-                    fontFamily: {
-                        cairo: ['Cairo', 'sans-serif'],
-                    }
+                    fontFamily: { cairo: ['Cairo', 'sans-serif'] }
                 }
             }
         }
     </script>
 
-    <!-- Google Fonts Cairo -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: #f8fafc;
-        }
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-        .chat-bubble-me {
-            border-radius: 18px 18px 2px 18px;
-        }
-        .chat-bubble-other {
-            border-radius: 18px 18px 18px 2px;
-        }
-        .fade-in {
-            animation: fadeIn 0.4s ease-out forwards;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .chat-image {
-            max-width: 100%;
-            max-height: 250px;
-            object-fit: contain;
-            display: block;
-        }
+        body { font-family: 'Cairo', sans-serif; background-color: #f8fafc; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .chat-bubble-me { border-radius: 18px 18px 2px 18px; }
+        .chat-bubble-other { border-radius: 18px 18px 18px 2px; }
+        .fade-in { animation: fadeIn 0.4s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .chat-image { max-width: 100%; max-height: 250px; object-fit: contain; display: block; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between selection:bg-delta-200 selection:text-delta-900">
 
-    <!-- Header Area -->
+    <!-- Header -->
     <header class="bg-white border-b border-delta-100 shadow-sm sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
             <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
                 
-                <!-- Logo & Institute Title -->
                 <div class="flex items-center gap-4 cursor-pointer" onclick="app.switchTab('home')">
                     <div class="relative w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-delta-500 to-delta-800 rounded-2xl flex items-center justify-center text-white shadow-md shadow-delta-200 group transition-transform hover:scale-105">
                         <i class="fa-solid fa-graduation-cap text-2xl"></i>
                         <span class="absolute -bottom-1 -right-1 bg-white text-delta-600 text-[10px] font-black px-1.5 py-0.5 rounded-md border border-delta-200 shadow-xs">DELTA</span>
                     </div>
                     <div>
-                        <h1 class="text-base sm:text-xl font-black text-delta-900 leading-tight">
-                            معهد الدلتا العالي
-                        </h1>
-                        <p class="text-xs sm:text-sm font-semibold text-delta-600">
-                            لنظم المعلومات الإدارية والمحاسبية بالمنصورة
-                        </p>
+                        <h1 class="text-base sm:text-xl font-black text-delta-900 leading-tight">معهد الدلتا العالي</h1>
+                        <p class="text-xs sm:text-sm font-semibold text-delta-600">لنظم المعلومات الإدارية والمحاسبية بالمنصورة</p>
                     </div>
                 </div>
 
-                <!-- Main Navigation Tabs -->
                 <div id="main-nav-tabs" class="hidden sm:flex items-center gap-1.5 bg-slate-100 p-1.5 rounded-2xl border border-slate-200 text-xs font-bold">
                     <button onclick="app.switchTab('home')" id="nav-tab-home" class="px-3.5 py-2 rounded-xl transition">
                         <i class="fa-solid fa-house ml-1.5"></i> الرئيسية والمواد
                     </button>
-                    <button onclick="app.switchTab('announcements')" id="nav-tab-announcements" class="px-3.5 py-2 rounded-xl transition relative">
-                        <i class="fa-solid fa-bullhorn ml-1.5"></i> الإعلانات والمقالات
+                    <button onclick="app.switchTab('announcements')" id="nav-tab-announcements" class="px-3.5 py-2 rounded-xl transition">
+                        <i class="fa-solid fa-bullhorn ml-1.5"></i> الإعلانات
                     </button>
                     <button onclick="app.switchTab('group_chats')" id="nav-tab-group_chats" class="px-3.5 py-2 rounded-xl transition">
                         <i class="fa-solid fa-comments ml-1.5"></i> الشات الجماعي
@@ -122,7 +77,6 @@
                     </button>
                 </div>
 
-                <!-- Quick Cloud Storage Button & Auth Controls -->
                 <div class="flex items-center gap-2.5 w-full lg:w-auto justify-end">
                     <a href="https://drive.google.com/drive/folders/1E_h14-it2xPXbvEdgfRq40mr169tR7ud?usp=sharing" 
                        target="_blank" rel="noopener noreferrer" 
@@ -130,15 +84,11 @@
                         <i class="fa-brands fa-google-drive text-sm"></i>
                         <span>المجلد السحابي</span>
                     </a>
-
-                    <div id="nav-user-container">
-                        <!-- Dynamic Auth Badge Injected via JS -->
-                    </div>
+                    <div id="nav-user-container"></div>
                 </div>
-
             </div>
 
-            <!-- Mobile Navigation Bar -->
+            <!-- Mobile Nav -->
             <div class="sm:hidden flex items-center justify-around mt-3 pt-2 border-t border-slate-100 text-[11px] font-bold">
                 <button onclick="app.switchTab('home')" id="mob-tab-home" class="py-1.5 px-2 rounded-lg">
                     <i class="fa-solid fa-house"></i> المواد
@@ -159,30 +109,25 @@
         </div>
     </header>
 
-    <!-- Main Content Container -->
+    <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full">
         
-        <!-- Welcome Banner -->
         <div id="welcome-banner" class="mb-6 bg-gradient-to-r from-delta-800 via-delta-700 to-sky-600 rounded-3xl p-6 sm:p-8 text-white shadow-lg shadow-delta-200/50 relative overflow-hidden">
             <div class="absolute -left-10 -bottom-10 opacity-10 pointer-events-none">
                 <i class="fa-solid fa-university text-[220px]"></i>
             </div>
             <div class="relative z-10 max-w-3xl flex flex-col md:flex-row md:items-center justify-between gap-6">
                 <div>
-                    <div id="banner-role-badge" class="mb-2 inline-block">
+                    <div class="mb-2 inline-block">
                         <span class="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-md">
                             منظومة التواصل والأكاديميا الرسمية 🎓
                         </span>
                     </div>
-                    <h2 class="text-xl sm:text-3xl font-extrabold mb-2" id="banner-title">
-                        أهلاً بك في منصة معهد الدلتا العالي بالمنصورة
-                    </h2>
-                    <p class="text-delta-100 text-xs sm:text-sm leading-relaxed" id="banner-subtitle">
-                        تواصل مباشر بين الطلاب وأعضاء هيئة التدريس، رفع المحاضرات ومتابعة الإعلانات الرسمية أولاً بأول.
+                    <h2 class="text-xl sm:text-3xl font-extrabold mb-2">أهلاً بك في منصة معهد الدلتا العالي بالمنصورة</h2>
+                    <p class="text-delta-100 text-xs sm:text-sm leading-relaxed">
+                        تواصل مباشر بين الطلاب وأعضاء هيئة التدريس، ومتابعة المحاضرات والإعلانات أولاً بأول.
                     </p>
                 </div>
-
-                <!-- Drive and Script buttons inside banner for mobile/quick access -->
                 <div class="flex flex-wrap gap-2 pt-2 md:pt-0">
                     <a href="https://drive.google.com/drive/folders/1E_h14-it2xPXbvEdgfRq40mr169tR7ud?usp=sharing" target="_blank" 
                        class="bg-white/10 hover:bg-white/20 border border-white/30 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition flex items-center gap-2 backdrop-blur-xs">
@@ -198,20 +143,13 @@
             </div>
         </div>
 
-        <!-- Main Dynamic View Canvas -->
-        <div id="main-view" class="transition-all duration-300 min-h-[50vh]">
-            <!-- Content injected dynamically via JS -->
-        </div>
-
+        <div id="main-view" class="transition-all duration-300 min-h-[50vh]"></div>
     </main>
 
-    <!-- Footer Area -->
+    <!-- Footer -->
     <footer class="bg-white border-t border-delta-100 mt-12 py-8 text-slate-600">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                
-                <!-- Mandatory Link 1 -->
                 <div class="bg-delta-50/70 border border-delta-100 rounded-2xl p-5 hover:border-delta-300 transition-all flex flex-col justify-between">
                     <div>
                         <div class="flex items-center gap-3 mb-2 text-delta-800 font-bold">
@@ -220,9 +158,7 @@
                             </div>
                             <span class="text-sm">إدارة الدعم الأكاديمي</span>
                         </div>
-                        <p class="text-xs text-slate-500 mb-4">
-                            معهد الدلتا العالي نظم للحاسبات بالمنصورة - التواصل المباشر والمتابعة الأكاديمية
-                        </p>
+                        <p class="text-xs text-slate-500 mb-4">معهد الدلتا العالي نظم للحاسبات بالمنصورة - التواصل المباشر</p>
                     </div>
                     <a href="https://www.facebook.com/share/g/1MKBprx4Xu/" target="_blank" rel="noopener noreferrer" 
                        class="inline-flex items-center justify-center gap-2 bg-delta-600 hover:bg-delta-700 text-white text-xs font-bold py-2.5 px-4 rounded-xl transition shadow-sm hover:shadow">
@@ -230,8 +166,6 @@
                         <i class="fa-solid fa-arrow-left text-[10px]"></i>
                     </a>
                 </div>
-
-                <!-- Mandatory Link 2 -->
                 <div class="bg-delta-50/70 border border-delta-100 rounded-2xl p-5 hover:border-delta-300 transition-all flex flex-col justify-between">
                     <div>
                         <div class="flex items-center gap-3 mb-2 text-delta-800 font-bold">
@@ -240,9 +174,7 @@
                             </div>
                             <span class="text-sm">شئون الطلاب</span>
                         </div>
-                        <p class="text-xs text-slate-500 mb-4">
-                            شئون الطلاب الدلتا نظم المعلومات الإدارية والمحاسبية - الجداول والأوراق والخدمات
-                        </p>
+                        <p class="text-xs text-slate-500 mb-4">شئون الطلاب الدلتا نظم المعلومات الإدارية والمحاسبية</p>
                     </div>
                     <a href="https://www.facebook.com/share/g/1CELDTqVbf/" target="_blank" rel="noopener noreferrer" 
                        class="inline-flex items-center justify-center gap-2 bg-delta-600 hover:bg-delta-700 text-white text-xs font-bold py-2.5 px-4 rounded-xl transition shadow-sm hover:shadow">
@@ -250,60 +182,36 @@
                         <i class="fa-solid fa-arrow-left text-[10px]"></i>
                     </a>
                 </div>
-
             </div>
-
             <div class="border-t border-slate-100 pt-4 text-center text-xs text-slate-400">
                 جميع الحقوق محفوظة &copy; 2026 معهد الدلتا العالي لنظم المعلومات الإدارية والمحاسبية بالمنصورة
             </div>
-
         </div>
     </footer>
 
-    <!-- Authentication & Sign Up Modal -->
+    <!-- Auth Modal -->
     <div id="auth-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-delta-100 relative my-8 max-h-[90vh] overflow-y-auto custom-scrollbar">
-            
             <button onclick="app.closeAuthModal()" class="absolute top-5 left-5 text-slate-400 hover:text-slate-600 transition">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
-
-            <!-- Modal Header -->
             <div class="text-center mb-5">
                 <div class="w-12 h-12 bg-delta-100 text-delta-600 rounded-2xl mx-auto flex items-center justify-center text-xl mb-2">
-                    <i class="fa-solid fa-user-shield" id="auth-modal-icon"></i>
+                    <i class="fa-solid fa-user-shield"></i>
                 </div>
-                <h3 class="text-xl font-black text-slate-800" id="auth-modal-title">بوابة الدخول للمنظومة</h3>
-                <p class="text-xs text-slate-500 mt-1" id="auth-modal-sub">سجل دخولك أو أنشئ حساباً جديداً للبدء</p>
+                <h3 class="text-xl font-black text-slate-800">بوابة الدخول للمنظومة</h3>
+                <p class="text-xs text-slate-500 mt-1">سجل دخولك أو أنشئ حساباً جديداً للبدء</p>
             </div>
-
-            <!-- Login / Signup Mode Switcher -->
             <div class="grid grid-cols-2 gap-1 bg-slate-100 p-1 rounded-2xl mb-5">
-                <button type="button" onclick="app.setAuthMode('login')" id="mode-tab-login" class="py-2 text-xs font-bold rounded-xl transition">
-                    تسجيل الدخول
-                </button>
-                <button type="button" onclick="app.setAuthMode('signup')" id="mode-tab-signup" class="py-2 text-xs font-bold rounded-xl transition">
-                    إنشاء حساب جديد ✨
-                </button>
+                <button type="button" onclick="app.setAuthMode('login')" id="mode-tab-login" class="py-2 text-xs font-bold rounded-xl transition">تسجيل الدخول</button>
+                <button type="button" onclick="app.setAuthMode('signup')" id="mode-tab-signup" class="py-2 text-xs font-bold rounded-xl transition">إنشاء حساب جديد ✨</button>
             </div>
-
-            <!-- Role Selector Tabs -->
-            <div id="role-selector-tabs" class="grid grid-cols-3 gap-1 bg-slate-100 p-1.5 rounded-2xl mb-5 transition-all duration-300">
-                <button type="button" onclick="app.setAuthRole('student')" id="role-tab-student" class="py-2 text-xs font-bold rounded-xl transition">
-                    👨‍🎓 طالب
-                </button>
-                <button type="button" onclick="app.setAuthRole('doctor')" id="role-tab-doctor" class="py-2 text-xs font-bold rounded-xl transition">
-                    👨‍🏫 دكتور
-                </button>
-                <button type="button" onclick="app.setAuthRole('staff')" id="role-tab-staff" class="py-2 text-xs font-bold rounded-xl transition">
-                    👔 شئون
-                </button>
+            <div id="role-selector-tabs" class="grid grid-cols-3 gap-1 bg-slate-100 p-1.5 rounded-2xl mb-5">
+                <button type="button" onclick="app.setAuthRole('student')" id="role-tab-student" class="py-2 text-xs font-bold rounded-xl transition">👨‍🎓 طالب</button>
+                <button type="button" onclick="app.setAuthRole('doctor')" id="role-tab-doctor" class="py-2 text-xs font-bold rounded-xl transition">👨‍🏫 دكتور</button>
+                <button type="button" onclick="app.setAuthRole('staff')" id="role-tab-staff" class="py-2 text-xs font-bold rounded-xl transition">👔 شئون</button>
             </div>
-
-            <!-- Form -->
             <form onsubmit="app.handleAuthSubmit(event)" class="space-y-3.5">
-                
-                <!-- Name field (Used for Signup) -->
                 <div id="field-name-container" class="hidden">
                     <label class="block text-xs font-bold text-slate-700 mb-1">الاسم الكامل (الرباعي)</label>
                     <div class="relative">
@@ -312,8 +220,6 @@
                         <i class="fa-solid fa-signature absolute right-3.5 top-3.5 text-slate-400 text-xs"></i>
                     </div>
                 </div>
-
-                <!-- Email Field -->
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1">البريد الإلكتروني</label>
                     <div class="relative">
@@ -322,60 +228,45 @@
                         <i class="fa-solid fa-envelope absolute right-3.5 top-3.5 text-slate-400 text-xs"></i>
                     </div>
                 </div>
-
-                <!-- Password Field -->
                 <div>
-                    <div class="flex items-center justify-between mb-1">
-                        <label class="block text-xs font-bold text-slate-700">كلمة المرور</label>
-                        <span id="pass-hint" class="text-[10px] text-delta-600 font-medium"></span>
-                    </div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">كلمة المرور</label>
                     <div class="relative">
                         <input type="password" id="auth-password" required placeholder="••••••••" 
                                class="w-full pl-3 pr-10 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-delta-500 focus:outline-none transition">
                         <i class="fa-solid fa-key absolute right-3.5 top-3.5 text-slate-400 text-xs"></i>
                     </div>
                 </div>
-
-                <!-- Student Division Selection Field (Only for Student Signup) -->
                 <div id="field-division-container" class="hidden">
-                    <label class="block text-xs font-bold text-slate-700 mb-1">الفرقة والشعبة الدراسية (للطالب)</label>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">الفرقة والشعبة الدراسية</label>
                     <div class="relative">
                         <select id="auth-division" class="w-full pl-3 pr-10 py-2.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-delta-500 focus:outline-none transition font-semibold text-slate-700">
                             <option value="div-1">الفرقة الأولى (شعبة عامة)</option>
                             <option value="div-2">الفرقة الثانية (شعبة عامة)</option>
-                            <option value="div-3-mis">الفرقة الثالثة (تخصص نظم المعلومات الإدارية)</option>
-                            <option value="div-3-acc">الفرقة الثالثة (تخصص المحاسبة والمراجعة)</option>
-                            <option value="div-4-mis">الفرقة الرابعة (بكالوريوس نظم المعلومات)</option>
-                            <option value="div-4-acc">الفرقة الرابعة (بكالوريوس المحاسبة)</option>
+                            <option value="div-3-mis">الفرقة الثالثة (نظم المعلومات)</option>
+                            <option value="div-3-acc">الفرقة الثالثة (محاسبة)</option>
+                            <option value="div-4-mis">الفرقة الرابعة (بكالوريوس نظم)</option>
+                            <option value="div-4-acc">الفرقة الرابعة (بكالوريوس محاسبة)</option>
                         </select>
                         <i class="fa-solid fa-layer-group absolute right-3.5 top-3 text-slate-400 text-xs"></i>
                     </div>
-                    <p class="text-[10px] text-slate-400 mt-1">سيتحدد مظهر المنظومة والمواد طبقاً للفرقة المختارة.</p>
                 </div>
-
                 <div id="auth-error" class="hidden text-xs text-red-600 bg-red-50 p-2.5 rounded-xl border border-red-100 font-semibold"></div>
-
-                <button type="submit" id="auth-submit-btn" class="w-full bg-delta-600 hover:bg-delta-700 text-white font-bold py-3 rounded-xl transition shadow-md shadow-delta-200 text-xs">
-                    تسجيل الدخول
-                </button>
+                <button type="submit" id="auth-submit-btn" class="w-full bg-delta-600 hover:bg-delta-700 text-white font-bold py-3 rounded-xl transition shadow-md shadow-delta-200 text-xs">تسجيل الدخول</button>
             </form>
-
         </div>
     </div>
 
-    <!-- Generic Modal Container -->
+    <!-- Generic Modal -->
     <div id="generic-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-delta-100 relative max-h-[90vh] overflow-y-auto custom-scrollbar">
             <button onclick="app.closeGenericModal()" class="absolute top-5 left-5 text-slate-400 hover:text-slate-600 transition">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
-            <div id="generic-modal-body">
-                <!-- Dynamic Modal Content Injected via JS -->
-            </div>
+            <div id="generic-modal-body"></div>
         </div>
     </div>
 
-    <!-- Toast Notification -->
+    <!-- Toast -->
     <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
         <div class="bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-700">
             <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
@@ -384,10 +275,6 @@
     </div>
 
     <script>
-        /**
-         * Delta Higher Institute Web Application Engine
-         * Implements Strict Role-Based Access Control, Custom Super Admin & Sign Up Workflows
-         */
         class DeltaApp {
             constructor() {
                 this.SUPER_ADMIN_EMAIL = 'bg522813@gmail.com';
@@ -395,19 +282,18 @@
                 this.DRIVE_FOLDER_URL = 'https://drive.google.com/drive/folders/1E_h14-it2xPXbvEdgfRq40mr169tR7ud?usp=sharing';
 
                 this.divisions = [
-                    { id: 'div-1', name: 'الفرقة الأولى', desc: 'شعبة عامة - جميع التخصصات' },
-                    { id: 'div-2', name: 'الفرقة الثانية', desc: 'شعبة عامة - التمهيدي للتخصص' },
-                    { id: 'div-3-mis', name: 'الفرقة الثالثة (نظم)', desc: 'تخصص نظم المعلومات الإدارية' },
-                    { id: 'div-3-acc', name: 'الفرقة الثالثة (محاسبة)', desc: 'تخصص المحاسبة والمراجعة' },
-                    { id: 'div-4-mis', name: 'الفرقة الرابعة (نظم)', desc: 'بكالوريوس نظم المعلومات الإدارية' },
-                    { id: 'div-4-acc', name: 'الفرقة الرابعة (محاسبة)', desc: 'بكالوريوس المحاسبة' }
+                    { id: 'div-1', name: 'الفرقة الأولى', desc: 'شعبة عامة' },
+                    { id: 'div-2', name: 'الفرقة الثانية', desc: 'شعبة عامة' },
+                    { id: 'div-3-mis', name: 'الفرقة الثالثة (نظم)', desc: 'نظم المعلومات' },
+                    { id: 'div-3-acc', name: 'الفرقة الثالثة (محاسبة)', desc: 'محاسبة' },
+                    { id: 'div-4-mis', name: 'الفرقة الرابعة (نظم)', desc: 'بكالوريوس نظم' },
+                    { id: 'div-4-acc', name: 'الفرقة الرابعة (محاسبة)', desc: 'بكالوريوس محاسبة' }
                 ];
 
                 this.currentUser = null;
                 this.authMode = 'login';
                 this.activeAuthRole = 'student';
                 this.currentTab = 'home';
-                
                 this.activeDivisionId = 'div-1';
                 this.activeSubjectId = null;
                 this.pendingImage = null;
@@ -416,60 +302,100 @@
                 this.init();
             }
 
-            // --- State Management ---
-
             loadState() {
-                const savedUser = localStorage.getItem('delta_user_session_v3');
+                const savedUser = localStorage.getItem('delta_user_session_v7');
                 this.currentUser = savedUser ? JSON.parse(savedUser) : null;
 
-                const savedAccounts = localStorage.getItem('delta_registered_accounts_v3');
+                const savedAccounts = localStorage.getItem('delta_registered_accounts_v7');
                 if (savedAccounts) {
                     this.registeredUsers = JSON.parse(savedAccounts);
                 } else {
                     this.registeredUsers = [
                         { email: 'bg522813@gmail.com', password: 'dr972005', name: 'المدير الفائق (أدمن النظام)', role: 'doctor', divisionId: 'all', isSuperAdmin: true },
-                        { email: 'doctor@delta.edu.eg', password: '123', name: 'أ.د/ أحمد منصور', role: 'doctor', divisionId: 'all', isSuperAdmin: false },
-                        { email: 'student@delta.edu.eg', password: '123', name: 'طالب تجريبي', role: 'student', divisionId: 'div-1', isSuperAdmin: false }
+                        { email: 'doctor@delta.edu.eg', password: '12345678', name: 'أ.د/ أحمد منصور', role: 'doctor', divisionId: 'all', isSuperAdmin: false },
+                        { email: 'staff@delta.edu.eg', password: '12345678', name: 'أ/ محمد شئون الطلاب', role: 'staff', divisionId: 'all', isSuperAdmin: false },
+                        { email: 'student@delta.edu.eg', password: '12345678', name: 'طالب تجريبي', role: 'student', divisionId: 'div-1', isSuperAdmin: false }
                     ];
                     this.saveRegisteredAccounts();
                 }
 
-                const savedSubjects = localStorage.getItem('delta_subjects_v3');
+                const savedSubjects = localStorage.getItem('delta_subjects_v7');
                 if (savedSubjects) {
                     this.subjects = JSON.parse(savedSubjects);
                 } else {
                     this.subjects = [
-                        { id: 'sub-101', divisionId: 'div-1', name: 'مقدمة في البرمجة وتكنولوجيا المعلومات', code: 'MIS101', doctorName: 'أ.د/ أحمد منصور', lectures: [{ id: 'lec-1', title: 'المحاضرة الأولى: مفاهيم علوم الحاسب', desc: 'شرح أساسيات الخوارزميات.', fileName: 'Lecture_1.pdf', driveUrl: this.DRIVE_FOLDER_URL, date: '2026-09-10' }], subjectChat: [] }
+                        { 
+                            id: 'sub-101', 
+                            divisionId: 'div-1', 
+                            name: 'مقدمة في البرمجة وتكنولوجيا المعلومات', 
+                            code: 'MIS101', 
+                            doctorEmail: 'doctor@delta.edu.eg', 
+                            doctorName: 'أ.د/ أحمد منصور', 
+                            lectures: [
+                                { 
+                                    id: 'lec-1', 
+                                    title: 'المحاضرة الأولى: مفاهيم علوم الحاسب', 
+                                    desc: 'شرح أساسيات الخوارزميات.', 
+                                    fileName: 'Lecture_1.pdf', 
+                                    driveUrl: this.DRIVE_FOLDER_URL, 
+                                    date: '2026-09-10' 
+                                }
+                            ], 
+                            subjectChat: [] 
+                        }
                     ];
                     this.saveSubjects();
                 }
 
-                const savedAnn = localStorage.getItem('delta_announcements_v3');
+                const savedAnn = localStorage.getItem('delta_announcements_v7');
                 if (savedAnn) {
                     this.announcements = JSON.parse(savedAnn);
                 } else {
                     this.announcements = [
-                        { id: 'ann-1', title: '📢 تنبيه مهم بشأن جداول المحاضرات', content: 'تم اعتماد الجداول لجميع الفرق.', author: 'شئون الطلاب', date: '2026-09-18', category: 'تنبيهات', driveUrl: this.DRIVE_FOLDER_URL }
+                        { 
+                            id: 'ann-1', 
+                            title: '📢 تنبيه مهم بشأن جداول المحاضرات', 
+                            content: 'تم اعتماد الجداول لجميع الفرق. يرجى مراجعة شئون الطلاب.', 
+                            author: 'شئون الطلاب', 
+                            authorEmail: 'staff@delta.edu.eg',
+                            date: '2026-09-18', 
+                            category: 'تنبيهات', 
+                            driveUrl: this.DRIVE_FOLDER_URL 
+                        }
                     ];
                     this.saveAnnouncements();
                 }
 
-                const savedGroupChats = localStorage.getItem('delta_group_chats_v3');
+                const savedGroupChats = localStorage.getItem('delta_group_chats_v7');
                 if (savedGroupChats) {
                     this.groupChats = JSON.parse(savedGroupChats);
                 } else {
-                    this.groupChats = { 'div-1': [], 'div-2': [], 'div-3-mis': [], 'div-3-acc': [], 'div-4-mis': [], 'div-4-acc': [] };
+                    this.groupChats = { 
+                        'div-1': [], 
+                        'div-2': [], 
+                        'div-3-mis': [], 
+                        'div-3-acc': [], 
+                        'div-4-mis': [], 
+                        'div-4-acc': [] 
+                    };
                     this.saveGroupChats();
+                }
+
+                const savedDMs = localStorage.getItem('delta_direct_messages_v7');
+                if (savedDMs) {
+                    this.directMessages = JSON.parse(savedDMs);
+                } else {
+                    this.directMessages = {};
+                    this.saveDirectMessages();
                 }
             }
 
-            saveRegisteredAccounts() { localStorage.setItem('delta_registered_accounts_v3', JSON.stringify(this.registeredUsers)); }
-            saveSubjects() { localStorage.setItem('delta_subjects_v3', JSON.stringify(this.subjects)); }
-            saveAnnouncements() { localStorage.setItem('delta_announcements_v3', JSON.stringify(this.announcements)); }
-            saveGroupChats() { localStorage.setItem('delta_group_chats_v3', JSON.stringify(this.groupChats)); }
-            saveSession() { localStorage.setItem('delta_user_session_v3', JSON.stringify(this.currentUser)); }
-
-            // --- Initialization & UI Updates ---
+            saveRegisteredAccounts() { localStorage.setItem('delta_registered_accounts_v7', JSON.stringify(this.registeredUsers)); }
+            saveSubjects() { localStorage.setItem('delta_subjects_v7', JSON.stringify(this.subjects)); }
+            saveAnnouncements() { localStorage.setItem('delta_announcements_v7', JSON.stringify(this.announcements)); }
+            saveGroupChats() { localStorage.setItem('delta_group_chats_v7', JSON.stringify(this.groupChats)); }
+            saveDirectMessages() { localStorage.setItem('delta_direct_messages_v7', JSON.stringify(this.directMessages)); }
+            saveSession() { localStorage.setItem('delta_user_session_v7', JSON.stringify(this.currentUser)); }
 
             init() {
                 this.updateAuthUI();
@@ -517,8 +443,6 @@
                 }
             }
 
-            // --- Authentication ---
-
             openAuthModal() {
                 document.getElementById('auth-modal').classList.remove('hidden');
                 this.setAuthMode('login');
@@ -528,9 +452,7 @@
                 document.getElementById('auth-password').value = '';
             }
 
-            closeAuthModal() {
-                document.getElementById('auth-modal').classList.add('hidden');
-            }
+            closeAuthModal() { document.getElementById('auth-modal').classList.add('hidden'); }
 
             setAuthMode(mode) {
                 this.authMode = mode;
@@ -551,7 +473,7 @@
                     loginBtn.className = 'py-2 text-xs font-bold rounded-xl transition text-slate-500 hover:bg-slate-200/50';
                     nameContainer.classList.remove('hidden');
                     if(roleTabs) roleTabs.classList.add('hidden');
-                    this.setAuthRole('student'); // Force student role for public signup
+                    this.setAuthRole('student');
                     submitBtn.innerHTML = 'إنشاء حساب والتسجيل';
                 }
                 this.updateRoleFields();
@@ -579,13 +501,6 @@
                 }
             }
 
-            quickSuperAdminFill() {
-                this.setAuthMode('login');
-                this.setAuthRole('doctor');
-                document.getElementById('auth-email').value = this.SUPER_ADMIN_EMAIL;
-                document.getElementById('auth-password').value = this.SUPER_ADMIN_PASS;
-            }
-
             handleAuthSubmit(e) {
                 e.preventDefault();
                 const email = document.getElementById('auth-email').value.trim().toLowerCase();
@@ -601,18 +516,17 @@
                         this.showToast(`مرحباً بك يا ${user.name}`);
                         this.init();
                     } else {
-                        errBox.innerHTML = '<i class="fa-solid fa-circle-exclamation ml-1"></i> بيانات الدخول غير صحيحة أو الدور المختار غير مطابق.';
+                        errBox.innerHTML = '<i class="fa-solid fa-circle-exclamation ml-1"></i> بيانات الدخول غير صحيحة.';
                         errBox.classList.remove('hidden');
                     }
                 } else {
                     const name = document.getElementById('auth-name').value.trim();
                     if (!name) { errBox.innerHTML = 'يرجى إدخال الاسم'; errBox.classList.remove('hidden'); return; }
                     
-                    // Password Validation: At least 8 chars, containing letters and numbers
                     const hasLetter = /[a-zA-Z\u0600-\u06FF]/.test(pass);
                     const hasNumber = /[0-9\u0660-\u0669]/.test(pass);
                     if (pass.length < 8 || !hasLetter || !hasNumber) {
-                        errBox.innerHTML = 'كلمة المرور يجب أن تتكون من 8 خانات على الأقل وتحتوي على أحرف وأرقام.';
+                        errBox.innerHTML = 'كلمة المرور: 8 خانات على الأقل وتحتوي أحرف وأرقام.';
                         errBox.classList.remove('hidden'); return;
                     }
 
@@ -622,7 +536,7 @@
                     }
                     
                     const newUser = {
-                        email: email, password: pass, name: name, role: 'student', // Enforce student role
+                        email: email, password: pass, name: name, role: 'student',
                         divisionId: document.getElementById('auth-division').value,
                         isSuperAdmin: false
                     };
@@ -638,23 +552,19 @@
 
             logout() {
                 this.currentUser = null;
-                localStorage.removeItem('delta_user_session_v3');
+                localStorage.removeItem('delta_user_session_v7');
                 this.showToast('تم تسجيل الخروج');
                 this.init();
             }
 
-            // --- Navigation & Routing ---
-
             switchTab(tab) {
                 this.currentTab = tab;
                 
-                // Update Desktop Tabs
                 ['home', 'announcements', 'group_chats', 'direct_messages', 'admin_panel'].forEach(t => {
                     const btn = document.getElementById(`nav-tab-${t}`);
                     if(btn) btn.className = t === tab ? 'px-3.5 py-2 rounded-xl transition bg-white text-delta-700 shadow-sm border border-slate-200' : 'px-3.5 py-2 rounded-xl transition text-slate-500 hover:text-slate-800 hover:bg-slate-200/50';
                 });
 
-                // Update Mobile Tabs
                 ['home', 'announcements', 'group_chats', 'direct_messages', 'admin_panel'].forEach(t => {
                     const btn = document.getElementById(`mob-tab-${t}`);
                     if(btn) btn.className = t === tab ? 'py-1.5 px-2 rounded-lg bg-delta-100 text-delta-700' : 'py-1.5 px-2 rounded-lg text-slate-500';
@@ -668,7 +578,7 @@
                                 <i class="fa-solid fa-lock"></i>
                             </div>
                             <h3 class="text-lg font-bold text-slate-800 mb-2">يرجى تسجيل الدخول</h3>
-                            <p class="text-xs text-slate-500 mb-6">يجب تسجيل الدخول كطالب أو دكتور لعرض محتوى هذه الصفحة.</p>
+                            <p class="text-xs text-slate-500 mb-6">يجب تسجيل الدخول لعرض محتوى هذه الصفحة.</p>
                             <button onclick="app.openAuthModal()" class="bg-delta-600 text-white text-xs font-bold px-6 py-2.5 rounded-xl shadow-md hover:bg-delta-700 transition">
                                 تسجيل الدخول الآن
                             </button>
@@ -686,48 +596,89 @@
                 }
             }
 
-            // --- Views ---
-
+            // ====== HOME (Subjects) ======
             renderHome() {
                 const view = document.getElementById('main-view');
-                let content = `<div class="fade-in flex items-center justify-between mb-4">
-                                <h3 class="text-lg font-black text-slate-800"><i class="fa-solid fa-book-open text-delta-600 ml-2"></i> المقررات الدراسية</h3>`;
+                const isDoctorOrStaff = this.currentUser.role === 'doctor' || this.currentUser.role === 'staff';
+                const canManage = isDoctorOrStaff || this.currentUser.isSuperAdmin;
                 
-                if (this.currentUser.role === 'doctor' || this.currentUser.role === 'staff') {
+                // Determine which division is currently viewed
+                const viewedDivisionId = this.currentUser.role === 'student' ? this.currentUser.divisionId : this.activeDivisionId;
+                const viewedDivisionName = this.divisions.find(d => d.id === viewedDivisionId)?.name || '';
+                
+                let content = `<div class="fade-in flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-3">
+                                <div class="flex items-center gap-3 flex-wrap">
+                                    <h3 class="text-lg font-black text-slate-800"><i class="fa-solid fa-book-open text-delta-600 ml-2"></i> المقررات الدراسية</h3>
+                                    <span class="text-xs bg-delta-50 text-delta-700 font-bold px-3 py-1 rounded-lg border border-delta-100">
+                                        <i class="fa-solid fa-layer-group ml-1"></i> ${viewedDivisionName}
+                                    </span>
+                                </div>`;
+                
+                if (canManage) {
                     content += `<button onclick="app.openAddSubjectModal()" class="bg-delta-100 text-delta-700 hover:bg-delta-200 text-xs font-bold px-4 py-2 rounded-xl transition">
-                                <i class="fa-solid fa-plus ml-1"></i> إضافة مادة
+                                <i class="fa-solid fa-plus ml-1"></i> إضافة مادة جديدة
                                </button>`;
                 }
                 content += `</div>`;
 
+                // For doctors/staff/admin: show division selector tabs
+                if (isDoctorOrStaff || this.currentUser.isSuperAdmin) {
+                    content += `
+                        <div class="mb-5 bg-white p-3 rounded-2xl border border-slate-200 shadow-sm">
+                            <div class="text-[11px] font-bold text-slate-500 mb-2 px-2">
+                                <i class="fa-solid fa-layer-group ml-1"></i> اختر الفرقة لعرض موادها وإدارتها:
+                            </div>
+                            <div class="flex flex-wrap gap-1.5">
+                                ${this.divisions.map(d => `
+                                    <button onclick="app.setActiveDivision('${d.id}')" 
+                                        class="${d.id === this.activeDivisionId ? 'bg-delta-600 text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'} text-xs font-bold px-3.5 py-2 rounded-xl transition">
+                                        ${d.name}
+                                    </button>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+
+                // Filter subjects
                 let userSubjects = this.subjects;
                 if (this.currentUser.role === 'student') {
                     userSubjects = this.subjects.filter(s => s.divisionId === this.currentUser.divisionId);
+                } else {
+                    userSubjects = this.subjects.filter(s => s.divisionId === this.activeDivisionId);
                 }
 
                 if (userSubjects.length === 0) {
-                    content += `<div class="bg-white p-8 rounded-3xl border border-slate-200 text-center text-slate-500 text-sm">لا توجد مواد دراسية مضافة حتى الآن.</div>`;
+                    content += `<div class="bg-white p-8 rounded-3xl border border-slate-200 text-center text-slate-500 text-sm">
+                        ${this.currentUser.role === 'student' ? 'لا توجد مواد دراسية مضافة لفرقتك حتى الآن.' : 'لا توجد مواد مضافة لهذه الفرقة. اضغط "إضافة مادة جديدة" للبدء.'}
+                    </div>`;
                 } else {
                     content += `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">`;
                     userSubjects.forEach(sub => {
                         const divInfo = this.divisions.find(d => d.id === sub.divisionId);
+                        const isOwner = sub.doctorEmail === this.currentUser.email;
+                        const canDelete = this.currentUser.isSuperAdmin || isOwner || this.currentUser.role === 'staff';
+                        
                         content += `
-                            <div class="bg-white border border-slate-200 rounded-3xl p-5 hover:shadow-lg hover:border-delta-300 transition-all cursor-pointer flex flex-col" onclick="app.renderSubjectDetails('${sub.id}')">
-                                <div class="flex items-center gap-3 mb-4">
-                                    <div class="w-10 h-10 rounded-xl bg-delta-50 text-delta-600 flex items-center justify-center text-lg">
-                                        <i class="fa-solid fa-book"></i>
+                            <div class="bg-white border border-slate-200 rounded-3xl p-5 hover:shadow-lg hover:border-delta-300 transition-all flex flex-col relative group">
+                                ${canDelete ? `<button onclick="event.stopPropagation(); app.deleteSubject('${sub.id}')" class="absolute top-3 left-3 w-8 h-8 bg-red-50 hover:bg-red-100 text-red-500 rounded-lg opacity-0 group-hover:opacity-100 transition flex items-center justify-center" title="حذف المادة"><i class="fa-solid fa-trash text-xs"></i></button>` : ''}
+                                <div class="cursor-pointer" onclick="app.renderSubjectDetails('${sub.id}')">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="w-10 h-10 rounded-xl bg-delta-50 text-delta-600 flex items-center justify-center text-lg">
+                                            <i class="fa-solid fa-book"></i>
+                                        </div>
+                                        <div class="flex-grow min-w-0">
+                                            <h4 class="font-bold text-slate-800 text-sm leading-tight truncate">${sub.name}</h4>
+                                            <p class="text-[10px] text-slate-400 mt-0.5">${sub.code} • ${divInfo ? divInfo.name : ''}</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h4 class="font-bold text-slate-800 text-sm leading-tight">${sub.name}</h4>
-                                        <p class="text-[10px] text-slate-400 mt-0.5">${sub.code} • ${divInfo ? divInfo.name : ''}</p>
+                                    <div class="text-xs text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+                                        <i class="fa-solid fa-chalkboard-user ml-1 text-slate-400"></i> القائم بالتدريس: <span class="font-bold">${sub.doctorName}</span>
                                     </div>
-                                </div>
-                                <div class="text-xs text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100 flex-grow">
-                                    <i class="fa-solid fa-chalkboard-user ml-1 text-slate-400"></i> القائم بالتدريس: <span class="font-bold">${sub.doctorName}</span>
-                                </div>
-                                <div class="mt-4 flex items-center justify-between text-[11px] font-bold">
-                                    <span class="text-delta-600 bg-delta-50 px-2 py-1 rounded-lg">${sub.lectures.length} محاضرات مرفوعة</span>
-                                    <span class="text-slate-500"><i class="fa-solid fa-arrow-left"></i> دخول للمادة</span>
+                                    <div class="mt-4 flex items-center justify-between text-[11px] font-bold">
+                                        <span class="text-delta-600 bg-delta-50 px-2 py-1 rounded-lg">${sub.lectures.length} محاضرة</span>
+                                        <span class="text-slate-500"><i class="fa-solid fa-arrow-left"></i> دخول</span>
+                                    </div>
                                 </div>
                             </div>
                         `;
@@ -737,10 +688,19 @@
                 view.innerHTML = content;
             }
 
+            setActiveDivision(divId) {
+                this.activeDivisionId = divId;
+                this.renderHome();
+            }
+
             renderSubjectDetails(subjectId) {
                 const sub = this.subjects.find(s => s.id === subjectId);
                 if (!sub) return;
                 this.activeSubjectId = subjectId;
+
+                const isOwner = sub.doctorEmail === this.currentUser.email;
+                const canManage = this.currentUser.isSuperAdmin || isOwner || this.currentUser.role === 'staff';
+                const isAdmin = this.currentUser.isSuperAdmin;
 
                 const view = document.getElementById('main-view');
                 let content = `
@@ -757,48 +717,55 @@
                     </div>
                     
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                        <!-- Lectures List -->
                         <div class="lg:col-span-2">
                             <div class="flex items-center justify-between mb-4">
                                 <h4 class="font-bold text-slate-800 text-sm"><i class="fa-solid fa-photo-film text-delta-500 ml-1"></i> المحاضرات والمواد العلمية</h4>
-                                ${(this.currentUser.role === 'doctor' || this.currentUser.role === 'staff') ? 
-                                    `<button onclick="app.addLecture('${sub.id}')" class="text-xs bg-delta-50 text-delta-600 px-3 py-1.5 rounded-lg font-bold hover:bg-delta-100">إضافة محاضرة +</button>` : ''}
+                                ${canManage ? `<button onclick="app.openAddLectureModal('${sub.id}')" class="text-xs bg-delta-50 text-delta-600 px-3 py-1.5 rounded-lg font-bold hover:bg-delta-100 transition">إضافة محاضرة +</button>` : ''}
                             </div>
                             <div class="space-y-3">
                                 ${sub.lectures.length === 0 ? '<p class="text-xs text-slate-500 p-4 bg-white rounded-xl border border-slate-200 text-center">لا توجد محاضرات حتى الآن.</p>' : ''}
                                 ${sub.lectures.map(lec => `
                                     <div class="bg-white p-4 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:shadow-md transition">
-                                        <div>
+                                        <div class="flex-grow">
                                             <h5 class="text-sm font-bold text-slate-800 mb-1">${lec.title}</h5>
                                             <p class="text-[11px] text-slate-500 mb-2">${lec.desc}</p>
                                             <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-md"><i class="fa-regular fa-calendar ml-1"></i> ${lec.date}</span>
                                         </div>
-                                        <a href="${lec.driveUrl}" target="_blank" class="shrink-0 bg-gradient-to-l from-delta-600 to-delta-500 text-white text-xs font-bold px-4 py-2 rounded-xl flex items-center justify-center gap-2 hover:shadow-lg transition">
-                                            <i class="fa-solid fa-cloud-arrow-down"></i> تحميل / عرض
-                                        </a>
+                                        <div class="flex gap-2 shrink-0">
+                                            <a href="${lec.driveUrl}" target="_blank" class="bg-gradient-to-l from-delta-600 to-delta-500 text-white text-xs font-bold px-4 py-2 rounded-xl flex items-center justify-center gap-2 hover:shadow-lg transition">
+                                                <i class="fa-solid fa-cloud-arrow-down"></i> عرض
+                                            </a>
+                                            ${canManage ? `<button onclick="app.deleteLecture('${sub.id}', '${lec.id}')" class="w-9 h-9 bg-red-50 hover:bg-red-100 text-red-500 rounded-xl flex items-center justify-center transition" title="حذف المحاضرة"><i class="fa-solid fa-trash text-xs"></i></button>` : ''}
+                                        </div>
                                     </div>
                                 `).join('')}
                             </div>
                         </div>
                         
-                        <!-- Subject Chat -->
                         <div class="bg-white rounded-3xl border border-slate-200 flex flex-col h-[500px] overflow-hidden shadow-sm">
-                            <div class="bg-slate-50 p-3 border-b border-slate-200 font-bold text-xs flex items-center gap-2">
-                                <i class="fa-solid fa-comments text-delta-500"></i> نقاش واستفسارات المادة
+                            <div class="bg-slate-50 p-3 border-b border-slate-200 font-bold text-xs flex items-center justify-between">
+                                <div class="flex items-center gap-2"><i class="fa-solid fa-comments text-delta-500"></i> نقاش المادة</div>
+                                ${isAdmin && sub.subjectChat.length > 0 ? `<button onclick="app.clearSubjectChat('${sub.id}')" class="text-red-500 hover:text-red-700 text-[10px]" title="مسح الكل"><i class="fa-solid fa-trash"></i></button>` : ''}
                             </div>
                             <div class="flex-grow p-4 overflow-y-auto custom-scrollbar flex flex-col gap-3 bg-slate-50/50" id="subject-chat-box">
                                 ${sub.subjectChat.length === 0 ? '<div class="text-center text-xs text-slate-400 mt-10">لا توجد رسائل. ابدأ بطرح سؤالك.</div>' : ''}
-                                ${sub.subjectChat.map(msg => `
-                                    <div class="${msg.senderName === this.currentUser.name ? 'self-end' : 'self-start'} max-w-[85%]">
-                                        <div class="text-[9px] text-slate-400 mb-1 px-1">${msg.senderName} • ${msg.time}</div>
-                                        <div class="p-2.5 text-xs ${msg.senderName === this.currentUser.name ? 'bg-delta-600 text-white chat-bubble-me' : 'bg-white border border-slate-200 text-slate-700 chat-bubble-other shadow-sm'}">
+                                ${sub.subjectChat.map(msg => {
+                                    const isMe = msg.senderEmail === this.currentUser.email;
+                                    const canDelete = isAdmin || isMe;
+                                    return `
+                                    <div class="${isMe ? 'self-end' : 'self-start'} max-w-[85%] group relative">
+                                        <div class="text-[9px] text-slate-400 mb-1 px-1 flex items-center gap-1.5">
+                                            <span>${msg.senderName} • ${msg.time}</span>
+                                            ${canDelete ? `<button onclick="app.deleteSubjectMessage('${sub.id}', '${msg.id}')" class="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-red-500" title="حذف"><i class="fa-solid fa-trash"></i></button>` : ''}
+                                        </div>
+                                        <div class="p-2.5 text-xs ${isMe ? 'bg-delta-600 text-white chat-bubble-me' : 'bg-white border border-slate-200 text-slate-700 chat-bubble-other shadow-sm'}">
                                             ${msg.text}
                                         </div>
                                     </div>
-                                `).join('')}
+                                `}).join('')}
                             </div>
                             <form onsubmit="app.sendSubjectMessage(event, '${sub.id}')" class="p-3 bg-white border-t border-slate-200 flex gap-2">
-                                <input type="text" id="sub-msg-input" placeholder="اكتب استفسارك هنا..." required class="flex-grow bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-delta-400">
+                                <input type="text" id="sub-msg-input" placeholder="اكتب استفسارك..." required class="flex-grow bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-delta-400">
                                 <button type="submit" class="bg-delta-600 text-white w-10 rounded-xl flex items-center justify-center hover:bg-delta-700 transition">
                                     <i class="fa-solid fa-paper-plane"></i>
                                 </button>
@@ -807,17 +774,185 @@
                     </div>
                 `;
                 view.innerHTML = content;
-                // Scroll to bottom
                 const chatBox = document.getElementById('subject-chat-box');
                 if(chatBox) chatBox.scrollTop = chatBox.scrollHeight;
             }
 
+            // ====== SUBJECT CRUD ======
+            openAddSubjectModal() {
+                const body = `
+                    <h3 class="text-lg font-black text-slate-800 mb-4">إضافة مادة جديدة</h3>
+                    <form onsubmit="app.submitAddSubject(event)" class="space-y-3">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">اسم المادة</label>
+                            <input type="text" id="new-sub-name" placeholder="مثال: مبادئ المحاسبة" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:border-delta-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">كود المادة (اختياري)</label>
+                            <input type="text" id="new-sub-code" placeholder="مثال: ACC101" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:border-delta-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">الفرقة الدراسية</label>
+                            <select id="new-sub-div" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:border-delta-500 focus:outline-none font-semibold">
+                                ${this.divisions.map(d => `<option value="${d.id}" ${d.id === this.activeDivisionId ? 'selected' : ''}>${d.name} - ${d.desc}</option>`).join('')}
+                            </select>
+                            <p class="text-[10px] text-slate-400 mt-1">يمكنك تغيير الفرقة لو المادة لفرقة تانية.</p>
+                        </div>
+                        <button type="submit" class="w-full bg-delta-600 text-white font-bold py-3 rounded-xl mt-2 text-sm shadow-md">حفظ المادة</button>
+                    </form>
+                `;
+                document.getElementById('generic-modal-body').innerHTML = body;
+                document.getElementById('generic-modal').classList.remove('hidden');
+            }
+
+            submitAddSubject(e) {
+                e.preventDefault();
+                const selectedDiv = document.getElementById('new-sub-div').value;
+                const newSub = {
+                    id: 'sub-' + Date.now(),
+                    name: document.getElementById('new-sub-name').value.trim(),
+                    code: document.getElementById('new-sub-code').value.trim() || '-',
+                    divisionId: selectedDiv,
+                    doctorEmail: this.currentUser.email,
+                    doctorName: this.currentUser.name,
+                    lectures: [],
+                    subjectChat: []
+                };
+                this.subjects.push(newSub);
+                this.saveSubjects();
+                this.activeDivisionId = selectedDiv;
+                this.closeGenericModal();
+                this.showToast('تم إضافة المادة بنجاح');
+                this.renderHome();
+            }
+
+            deleteSubject(subjectId) {
+                const sub = this.subjects.find(s => s.id === subjectId);
+                if (!sub) return;
+                const isOwner = sub.doctorEmail === this.currentUser.email;
+                if (!this.currentUser.isSuperAdmin && !isOwner && this.currentUser.role !== 'staff') {
+                    this.showToast('غير مصرح لك بحذف هذه المادة');
+                    return;
+                }
+                if (!confirm(`هل أنت متأكد من حذف مادة "${sub.name}" بكل محاضراتها؟`)) return;
+                this.subjects = this.subjects.filter(s => s.id !== subjectId);
+                this.saveSubjects();
+                this.showToast('تم حذف المادة');
+                this.renderHome();
+            }
+
+            openAddLectureModal(subjectId) {
+                const body = `
+                    <h3 class="text-lg font-black text-slate-800 mb-4">إضافة محاضرة جديدة</h3>
+                    <form onsubmit="app.submitAddLecture(event, '${subjectId}')" class="space-y-3">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">عنوان المحاضرة</label>
+                            <input type="text" id="new-lec-title" placeholder="مثال: المحاضرة الأولى - مقدمة" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:border-delta-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">وصف مختصر</label>
+                            <textarea id="new-lec-desc" placeholder="شرح مختصر لمحتوى المحاضرة" rows="3" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:border-delta-500 focus:outline-none"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">رابط الملف على Google Drive</label>
+                            <input type="url" id="new-lec-url" placeholder="https://drive.google.com/..." required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:border-delta-500 focus:outline-none text-left" dir="ltr">
+                            <p class="text-[10px] text-slate-400 mt-1">ارفع الملف على Google Drive وضع الرابط هنا.</p>
+                        </div>
+                        <button type="submit" class="w-full bg-delta-600 text-white font-bold py-3 rounded-xl mt-2 text-sm shadow-md">حفظ المحاضرة</button>
+                    </form>
+                `;
+                document.getElementById('generic-modal-body').innerHTML = body;
+                document.getElementById('generic-modal').classList.remove('hidden');
+            }
+
+            submitAddLecture(e, subjectId) {
+                e.preventDefault();
+                const sub = this.subjects.find(s => s.id === subjectId);
+                if (!sub) return;
+                sub.lectures.push({
+                    id: 'lec-' + Date.now(),
+                    title: document.getElementById('new-lec-title').value.trim(),
+                    desc: document.getElementById('new-lec-desc').value.trim() || '-',
+                    fileName: 'Lecture_Material.pdf',
+                    driveUrl: document.getElementById('new-lec-url').value.trim(),
+                    date: new Date().toISOString().split('T')[0]
+                });
+                this.saveSubjects();
+                this.closeGenericModal();
+                this.showToast('تم إضافة المحاضرة');
+                this.renderSubjectDetails(subjectId);
+            }
+
+            deleteLecture(subjectId, lectureId) {
+                const sub = this.subjects.find(s => s.id === subjectId);
+                if (!sub) return;
+                const isOwner = sub.doctorEmail === this.currentUser.email;
+                if (!this.currentUser.isSuperAdmin && !isOwner && this.currentUser.role !== 'staff') {
+                    this.showToast('غير مصرح');
+                    return;
+                }
+                if (!confirm('حذف هذه المحاضرة؟')) return;
+                sub.lectures = sub.lectures.filter(l => l.id !== lectureId);
+                this.saveSubjects();
+                this.showToast('تم حذف المحاضرة');
+                this.renderSubjectDetails(subjectId);
+            }
+
+            sendSubjectMessage(e, subjectId) {
+                e.preventDefault();
+                const input = document.getElementById('sub-msg-input');
+                const text = input.value.trim();
+                if (!text) return;
+                const sub = this.subjects.find(s => s.id === subjectId);
+                sub.subjectChat.push({
+                    id: 'msg-' + Date.now(),
+                    senderEmail: this.currentUser.email,
+                    senderName: this.currentUser.name,
+                    senderRole: this.currentUser.role,
+                    text: text,
+                    time: new Date().toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })
+                });
+                this.saveSubjects();
+                this.renderSubjectDetails(subjectId);
+            }
+
+            deleteSubjectMessage(subjectId, msgId) {
+                const sub = this.subjects.find(s => s.id === subjectId);
+                if (!sub) return;
+                const msg = sub.subjectChat.find(m => m.id === msgId);
+                if (!msg) return;
+                const isMe = msg.senderEmail === this.currentUser.email;
+                if (!this.currentUser.isSuperAdmin && !isMe) {
+                    this.showToast('يمكنك حذف رسائلك فقط');
+                    return;
+                }
+                if (!confirm('حذف هذه الرسالة؟')) return;
+                sub.subjectChat = sub.subjectChat.filter(m => m.id !== msgId);
+                this.saveSubjects();
+                this.showToast('تم حذف الرسالة');
+                this.renderSubjectDetails(subjectId);
+            }
+
+            clearSubjectChat(subjectId) {
+                if (!this.currentUser.isSuperAdmin) return;
+                if (!confirm('مسح كل رسائل هذه المادة؟')) return;
+                const sub = this.subjects.find(s => s.id === subjectId);
+                sub.subjectChat = [];
+                this.saveSubjects();
+                this.showToast('تم مسح الرسائل');
+                this.renderSubjectDetails(subjectId);
+            }
+
+            // ====== ANNOUNCEMENTS ======
             renderAnnouncements() {
                 const view = document.getElementById('main-view');
-                let content = `<div class="flex items-center justify-between mb-6">
-                                <h3 class="text-lg font-black text-slate-800"><i class="fa-solid fa-bullhorn text-delta-600 ml-2"></i> لوحة الإعلانات الرسمية</h3>`;
+                const canCreate = this.currentUser.role === 'staff' || this.currentUser.isSuperAdmin;
+                const canDeleteAny = this.currentUser.role === 'staff' || this.currentUser.isSuperAdmin;
                 
-                if (this.currentUser.role === 'staff' || this.currentUser.isSuperAdmin) {
+                let content = `<div class="flex items-center justify-between mb-6">
+                                <h3 class="text-lg font-black text-slate-800"><i class="fa-solid fa-bullhorn text-delta-600 ml-2"></i> لوحة الإعلانات</h3>`;
+                
+                if (canCreate) {
                     content += `<button onclick="app.openAddAnnouncementModal()" class="bg-amber-100 text-amber-700 hover:bg-amber-200 text-xs font-bold px-4 py-2 rounded-xl transition">
                                 <i class="fa-solid fa-plus ml-1"></i> إضافة إعلان
                                </button>`;
@@ -828,8 +963,12 @@
                     content += `<div class="bg-white p-8 rounded-3xl border border-slate-200 text-center text-slate-500 text-sm">لا توجد إعلانات حالياً.</div>`;
                 } else {
                     [...this.announcements].reverse().forEach(ann => {
+                        const isAuthor = ann.authorEmail === this.currentUser.email || ann.author === this.currentUser.name;
+                        const canDelete = canDeleteAny || isAuthor;
+                        
                         content += `
                             <div class="bg-white p-5 sm:p-6 rounded-3xl border-l-4 border-l-amber-500 border border-slate-200 shadow-sm relative overflow-hidden">
+                                ${canDelete ? `<button onclick="app.deleteAnnouncement('${ann.id}')" class="absolute top-4 left-4 text-red-400 hover:text-red-600 transition" title="حذف"><i class="fa-solid fa-trash"></i></button>` : ''}
                                 <div class="absolute -left-4 -top-4 opacity-5 pointer-events-none"><i class="fa-solid fa-bell text-9xl"></i></div>
                                 <div class="relative z-10">
                                     <div class="flex items-center gap-2 mb-2">
@@ -839,7 +978,7 @@
                                     <h4 class="text-base font-bold text-slate-800 mb-2">${ann.title}</h4>
                                     <p class="text-sm text-slate-600 mb-4 leading-relaxed">${ann.content}</p>
                                     <div class="flex items-center justify-between border-t border-slate-100 pt-3">
-                                        <div class="text-xs text-slate-500 font-bold"><i class="fa-solid fa-user-pen ml-1"></i> بواسطة: ${ann.author}</div>
+                                        <div class="text-xs text-slate-500 font-bold"><i class="fa-solid fa-user-pen ml-1"></i> ${ann.author}</div>
                                         ${ann.driveUrl ? `<a href="${ann.driveUrl}" target="_blank" class="text-xs text-blue-600 hover:text-blue-800 font-bold bg-blue-50 px-3 py-1.5 rounded-lg transition"><i class="fa-solid fa-link ml-1"></i> المرفقات</a>` : ''}
                                     </div>
                                 </div>
@@ -851,10 +990,29 @@
                 view.innerHTML = content;
             }
 
+            deleteAnnouncement(id) {
+                const ann = this.announcements.find(a => a.id === id);
+                if (!ann) return;
+                const isAuthor = ann.authorEmail === this.currentUser.email || ann.author === this.currentUser.name;
+                const canDelete = this.currentUser.isSuperAdmin || this.currentUser.role === 'staff' || isAuthor;
+                if (!canDelete) {
+                    this.showToast('غير مصرح');
+                    return;
+                }
+                if (!confirm('هل أنت متأكد من حذف هذا الإعلان؟')) return;
+                this.announcements = this.announcements.filter(a => a.id !== id);
+                this.saveAnnouncements();
+                this.showToast('تم حذف الإعلان');
+                this.renderAnnouncements();
+            }
+
+            // ====== GROUP CHATS ======
             renderGroupChats() {
                 const view = document.getElementById('main-view');
                 let targetDiv = this.currentUser.role === 'student' ? this.currentUser.divisionId : this.activeDivisionId;
-                
+                const isAdmin = this.currentUser.isSuperAdmin;
+                const canPin = this.currentUser.role !== 'student' || isAdmin;
+
                 let content = `<div class="fade-in flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-4">
                                 <h3 class="text-lg font-black text-slate-800"><i class="fa-solid fa-users text-delta-600 ml-2"></i> الجروبات الأكاديمية</h3>`;
                 
@@ -867,10 +1025,7 @@
 
                 const msgs = this.groupChats[targetDiv] || [];
                 const divName = this.divisions.find(d => d.id === targetDiv)?.name || '';
-                
-                // Get pinned messages
                 const pinnedMsgs = msgs.filter(m => m.isPinned);
-                const canPin = (this.currentUser.role === 'doctor' || this.currentUser.role === 'staff' || this.currentUser.isSuperAdmin);
 
                 content += `
                     <div class="fade-in bg-white rounded-3xl border border-slate-200 flex flex-col h-[600px] overflow-hidden shadow-md">
@@ -879,17 +1034,18 @@
                                 <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center text-xl backdrop-blur-sm"><i class="fa-solid fa-comments"></i></div>
                                 <div>
                                     <div class="text-base leading-tight">شات ${divName}</div>
-                                    <div class="text-[10px] text-delta-200 mt-0.5">رسائل ومرفقات الفرقة</div>
+                                    <div class="text-[10px] text-delta-200 mt-0.5">جروب مفتوح للطلاب والدكاترة والشئون</div>
                                 </div>
                             </div>
+                            ${isAdmin && msgs.length > 0 ? `<button onclick="app.clearGroupChat('${targetDiv}')" class="bg-red-500/80 hover:bg-red-600 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition flex items-center gap-1"><i class="fa-solid fa-trash"></i> مسح الكل</button>` : ''}
                         </div>
                         
                         ${pinnedMsgs.length > 0 ? `
-                        <div class="bg-amber-50/80 border-b border-amber-100 p-3 text-xs flex flex-col gap-2 max-h-32 overflow-y-auto custom-scrollbar backdrop-blur-sm">
-                            <div class="text-amber-800 font-bold flex items-center gap-1.5"><i class="fa-solid fa-thumbtack text-amber-600"></i> إعلانات ورسائل مثبتة:</div>
+                        <div class="bg-amber-50/80 border-b border-amber-100 p-3 text-xs flex flex-col gap-2 max-h-32 overflow-y-auto custom-scrollbar">
+                            <div class="text-amber-800 font-bold flex items-center gap-1.5"><i class="fa-solid fa-thumbtack text-amber-600"></i> رسائل مثبتة:</div>
                             ${pinnedMsgs.map(m => `
-                                <div class="bg-white p-2.5 rounded-xl border border-amber-200/60 text-slate-700 shadow-sm flex items-start gap-3 transition hover:shadow">
-                                    <div class="flex-grow font-medium leading-relaxed">${m.text} ${m.imageUrl ? '<span class="text-amber-500 bg-amber-50 px-2 py-0.5 rounded-md ml-1"><i class="fa-solid fa-image"></i> صورة مرفقة</span>' : ''}</div>
+                                <div class="bg-white p-2.5 rounded-xl border border-amber-200/60 text-slate-700 shadow-sm flex items-start gap-3">
+                                    <div class="flex-grow font-medium leading-relaxed">${m.text} ${m.imageUrl ? '<span class="text-amber-500 bg-amber-50 px-2 py-0.5 rounded-md ml-1"><i class="fa-solid fa-image"></i> صورة</span>' : ''}</div>
                                     ${canPin ? `<button type="button" onclick="app.togglePinMessage('${targetDiv}', '${m.id}')" class="text-slate-400 hover:text-red-500 transition shrink-0"><i class="fa-solid fa-xmark"></i></button>` : ''}
                                 </div>
                             `).join('')}
@@ -897,20 +1053,26 @@
                         ` : ''}
 
                         <div class="flex-grow p-4 sm:p-6 overflow-y-auto custom-scrollbar flex flex-col gap-4 bg-[#f0f2f5]" id="main-group-chat-box">
-                            ${msgs.length === 0 ? '<div class="text-center text-xs text-slate-400 mt-10 bg-white/50 p-4 rounded-xl max-w-xs mx-auto border border-slate-100 shadow-sm">هذا الجروب جديد، كن أول من يرسل رسالة.</div>' : ''}
+                            ${msgs.length === 0 ? '<div class="text-center text-xs text-slate-400 mt-10 bg-white/50 p-4 rounded-xl max-w-xs mx-auto border border-slate-100 shadow-sm">لا توجد رسائل بعد. كن أول من يشارك!</div>' : ''}
                             ${msgs.map(msg => {
-                                const isMe = msg.senderName === this.currentUser.name;
+                                const isMe = msg.senderEmail === this.currentUser.email;
                                 const roleColor = msg.role === 'doctor' ? 'text-amber-600' : (msg.role === 'staff' ? 'text-emerald-600' : 'text-slate-500');
                                 const roleBadge = msg.role !== 'student' ? `<i class="fa-solid fa-circle-check ml-1 text-[10px]"></i>` : '';
+                                const canDeleteMsg = isAdmin || isMe;
                                 
                                 return `
-                                <div class="${isMe ? 'self-end' : 'self-start'} max-w-[90%] sm:max-w-[70%] group">
+                                <div class="${isMe ? 'self-end' : 'self-start'} max-w-[90%] sm:max-w-[70%] group relative">
                                     <div class="text-[10px] ${roleColor} font-bold mb-1.5 px-1 flex items-center gap-1.5">
                                         ${msg.senderName} ${roleBadge} 
                                         <span class="text-slate-400 font-normal opacity-70 px-1">• ${msg.time}</span>
                                         ${canPin ? `
-                                            <button onclick="app.togglePinMessage('${targetDiv}', '${msg.id}')" class="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-amber-500 ml-2" title="${msg.isPinned ? 'إلغاء التثبيت' : 'تثبيت كإعلان'}">
+                                            <button onclick="app.togglePinMessage('${targetDiv}', '${msg.id}')" class="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-amber-500 ml-2" title="تثبيت">
                                                 <i class="fa-solid fa-thumbtack ${msg.isPinned ? 'text-amber-500' : ''}"></i>
+                                            </button>
+                                        ` : ''}
+                                        ${canDeleteMsg ? `
+                                            <button onclick="app.deleteGroupMessage('${targetDiv}', '${msg.id}')" class="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-red-500 ml-1" title="${isMe && !isAdmin ? 'حذف رسالتي' : 'حذف'}">
+                                                <i class="fa-solid fa-trash"></i>
                                             </button>
                                         ` : ''}
                                     </div>
@@ -921,7 +1083,7 @@
                                 </div>
                             `}).join('')}
                         </div>
-                        
+
                         <div id="image-preview-container" class="hidden px-4 pt-3 pb-1 bg-slate-50 border-t border-slate-200">
                             <div class="relative inline-block">
                                 <img id="chat-image-preview" src="" class="h-16 w-auto rounded-lg border border-slate-300 shadow-sm object-cover" />
@@ -930,11 +1092,11 @@
                         </div>
 
                         <form onsubmit="app.sendGroupMessage(event, '${targetDiv}')" class="p-4 bg-white border-t border-slate-200 flex gap-2 sm:gap-3 items-end">
-                            <label class="cursor-pointer bg-slate-100 hover:bg-slate-200 text-slate-500 h-12 w-12 sm:w-14 rounded-xl flex items-center justify-center transition shadow-sm text-lg shrink-0 border border-slate-200" title="إرفاق صورة أو ملف">
+                            <label class="cursor-pointer bg-slate-100 hover:bg-slate-200 text-slate-500 h-12 w-12 sm:w-14 rounded-xl flex items-center justify-center transition shadow-sm text-lg shrink-0 border border-slate-200" title="إرفاق صورة">
                                 <i class="fa-solid fa-image"></i>
                                 <input type="file" id="group-img-input" accept="image/*" class="hidden" onchange="app.handleImageSelect(event)">
                             </label>
-                            <textarea id="group-msg-input" placeholder="اكتب رسالتك هنا..." required autocomplete="off" rows="1" class="flex-grow bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-delta-400 focus:bg-white transition shadow-inner resize-none overflow-hidden" oninput="this.style.height = '';this.style.height = this.scrollHeight + 'px'"></textarea>
+                            <textarea id="group-msg-input" placeholder="اكتب رسالتك هنا..." autocomplete="off" rows="1" class="flex-grow bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-delta-400 focus:bg-white transition shadow-inner resize-none overflow-hidden" oninput="this.style.height = '';this.style.height = this.scrollHeight + 'px'"></textarea>
                             <button type="submit" class="bg-delta-600 text-white h-12 w-12 sm:w-14 rounded-xl flex items-center justify-center hover:bg-delta-700 transition shadow-md hover:shadow-lg text-lg shrink-0">
                                 <i class="fa-solid fa-paper-plane"></i>
                             </button>
@@ -946,41 +1108,14 @@
                 if(chatBox) chatBox.scrollTop = chatBox.scrollHeight;
             }
 
-            renderDirectMessages() {
-                const view = document.getElementById('main-view');
-                // Very simplified mock for DM UI
-                view.innerHTML = `
-                    <div class="flex items-center justify-center h-[50vh]">
-                        <div class="text-center bg-white p-8 rounded-3xl border border-slate-200 shadow-sm max-w-md">
-                            <div class="w-20 h-20 bg-delta-50 text-delta-500 rounded-full flex items-center justify-center text-4xl mx-auto mb-4">
-                                <i class="fa-solid fa-envelope-open-text"></i>
-                            </div>
-                            <h3 class="text-lg font-bold text-slate-800 mb-2">التواصل الخاص</h3>
-                            <p class="text-xs text-slate-500 mb-6 leading-relaxed">
-                                يتم حالياً ربط نظام الرسائل المباشرة مع الإيميل الجامعي لأعضاء هيئة التدريس لضمان الخصوصية والسرعة.
-                            </p>
-                            <a href="mailto:info@delta.edu.eg" class="inline-block bg-delta-600 text-white text-xs font-bold px-6 py-2.5 rounded-xl shadow-md hover:bg-delta-700 transition">
-                                إرسال بريد إلكتروني
-                            </a>
-                        </div>
-                    </div>
-                `;
-            }
-
-            // --- Interactions & Modals ---
-
-            changeActiveDivision(divId) {
-                this.activeDivisionId = divId;
-                this.renderGroupChats();
+            changeActiveDivision(divId) { 
+                this.activeDivisionId = divId; 
+                this.renderGroupChats(); 
             }
 
             handleImageSelect(e) {
                 const file = e.target.files[0];
                 if (!file) return;
-                
-                const input = document.getElementById('group-msg-input');
-                if(input) input.removeAttribute('required');
-
                 const reader = new FileReader();
                 reader.onload = (event) => {
                     this.pendingImage = event.target.result;
@@ -994,10 +1129,10 @@
                 this.pendingImage = null;
                 document.getElementById('group-img-input').value = '';
                 document.getElementById('image-preview-container').classList.add('hidden');
-                document.getElementById('group-msg-input').setAttribute('required', 'required');
             }
 
             togglePinMessage(divId, msgId) {
+                if (this.currentUser.role === 'student' && !this.currentUser.isSuperAdmin) return;
                 if (!this.groupChats[divId]) return;
                 const msg = this.groupChats[divId].find(m => m.id === msgId);
                 if (msg) {
@@ -1008,34 +1143,42 @@
                 }
             }
 
-            sendSubjectMessage(e, subjectId) {
-                e.preventDefault();
-                const input = document.getElementById('sub-msg-input');
-                const text = input.value.trim();
-                if (!text) return;
+            deleteGroupMessage(divId, msgId) {
+                if (!this.groupChats[divId]) return;
+                const msg = this.groupChats[divId].find(m => m.id === msgId);
+                if (!msg) return;
+                const isMe = msg.senderEmail === this.currentUser.email;
+                const canDelete = this.currentUser.isSuperAdmin || isMe;
+                if (!canDelete) {
+                    this.showToast('يمكنك حذف رسائلك فقط');
+                    return;
+                }
+                if (!confirm('حذف هذه الرسالة؟')) return;
+                this.groupChats[divId] = this.groupChats[divId].filter(m => m.id !== msgId);
+                this.saveGroupChats();
+                this.showToast('تم حذف الرسالة');
+                this.renderGroupChats();
+            }
 
-                const sub = this.subjects.find(s => s.id === subjectId);
-                sub.subjectChat.push({
-                    id: 'msg-' + Date.now(),
-                    senderName: this.currentUser.name,
-                    senderRole: this.currentUser.role,
-                    text: text,
-                    time: new Date().toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })
-                });
-                this.saveSubjects();
-                this.renderSubjectDetails(subjectId);
+            clearGroupChat(divId) {
+                if (!this.currentUser.isSuperAdmin) return;
+                if (!confirm('هل أنت متأكد من مسح جميع رسائل هذا الجروب؟')) return;
+                this.groupChats[divId] = [];
+                this.saveGroupChats();
+                this.showToast('تم مسح جميع الرسائل');
+                this.renderGroupChats();
             }
 
             sendGroupMessage(e, divId) {
                 e.preventDefault();
                 const input = document.getElementById('group-msg-input');
                 const text = input.value.trim();
-                
                 if (!text && !this.pendingImage) return;
 
                 if (!this.groupChats[divId]) this.groupChats[divId] = [];
                 this.groupChats[divId].push({
                     id: 'gm-' + Date.now(),
+                    senderEmail: this.currentUser.email,
                     senderName: this.currentUser.name,
                     role: this.currentUser.role,
                     text: text,
@@ -1043,19 +1186,224 @@
                     isPinned: false,
                     time: new Date().toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })
                 });
-                
                 this.pendingImage = null;
                 this.saveGroupChats();
                 this.renderGroupChats();
             }
 
+            // ====== DIRECT MESSAGES ======
+            renderDirectMessages() {
+                const view = document.getElementById('main-view');
+                const officials = this.registeredUsers.filter(u => u.role === 'doctor' || u.role === 'staff');
+                
+                if (this.currentUser.role === 'student') {
+                    view.innerHTML = `
+                        <div class="fade-in">
+                            <h3 class="text-lg font-black text-slate-800 mb-4"><i class="fa-solid fa-paper-plane text-delta-600 ml-2"></i> تواصل مع الدكاترة والشئون</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                ${officials.map(o => {
+                                    const key = this.getDMKey(this.currentUser.email, o.email);
+                                    const msgs = this.directMessages[key] || [];
+                                    const lastMsg = msgs[msgs.length - 1];
+                                    const roleLabel = o.role === 'doctor' ? 'عضو هيئة تدريس' : 'شئون طلاب';
+                                    const roleIcon = o.role === 'doctor' ? '👨‍🏫' : '👔';
+                                    return `
+                                        <div onclick="app.openDirectChat('${o.email}')" class="bg-white p-5 rounded-3xl border border-slate-200 hover:border-delta-300 hover:shadow-md transition cursor-pointer">
+                                            <div class="flex items-center gap-4">
+                                                <div class="w-12 h-12 bg-delta-50 text-delta-600 rounded-2xl flex items-center justify-center text-xl shrink-0">
+                                                    <i class="fa-solid fa-user-tie"></i>
+                                                </div>
+                                                <div class="flex-grow min-w-0">
+                                                    <div class="flex items-center gap-2">
+                                                        <h4 class="font-bold text-slate-800 text-sm truncate">${o.name}</h4>
+                                                        ${o.isSuperAdmin ? '<span class="text-[9px] bg-amber-500 text-white px-1.5 py-0.5 rounded">أدمن</span>' : ''}
+                                                    </div>
+                                                    <p class="text-[11px] text-slate-500 mt-0.5">${roleIcon} ${roleLabel}</p>
+                                                    ${lastMsg ? `<p class="text-[11px] text-slate-400 mt-1 truncate">آخر رسالة: ${lastMsg.text || '📷 صورة'}</p>` : '<p class="text-[11px] text-slate-400 mt-1">ابدأ المحادثة</p>'}
+                                                </div>
+                                                <i class="fa-solid fa-arrow-left text-slate-300"></i>
+                                            </div>
+                                        </div>
+                                    `;
+                                }).join('')}
+                                ${officials.length === 0 ? '<p class="text-xs text-slate-500 text-center col-span-2 py-8">لا يوجد دكاترة أو شئون مسجلين حالياً.</p>' : ''}
+                            </div>
+                        </div>
+                    `;
+                    return;
+                }
+
+                const inbox = [];
+                const seenKeys = new Set();
+                
+                Object.keys(this.directMessages).forEach(key => {
+                    if (key.includes(this.currentUser.email) && !seenKeys.has(key)) {
+                        seenKeys.add(key);
+                        const parts = key.split('|||');
+                        const otherEmail = parts[0] === this.currentUser.email ? parts[1] : parts[0];
+                        const otherUser = this.registeredUsers.find(u => u.email === otherEmail);
+                        if (otherUser) {
+                            const msgs = this.directMessages[key] || [];
+                            const lastMsg = msgs[msgs.length - 1];
+                            inbox.push({ user: otherUser, key, lastMsg, count: msgs.length });
+                        }
+                    }
+                });
+
+                const allStudents = this.registeredUsers.filter(u => u.role === 'student');
+                allStudents.forEach(s => {
+                    const key = this.getDMKey(this.currentUser.email, s.email);
+                    if (!seenKeys.has(key)) {
+                        inbox.push({ user: s, key, lastMsg: null, count: 0 });
+                    }
+                });
+
+                view.innerHTML = `
+                    <div class="fade-in">
+                        <h3 class="text-lg font-black text-slate-800 mb-4"><i class="fa-solid fa-inbox text-delta-600 ml-2"></i> صندوق الرسائل المباشرة</h3>
+                        ${inbox.length === 0 ? '<div class="bg-white p-8 rounded-3xl border border-slate-200 text-center text-slate-500 text-sm">لا توجد محادثات بعد.</div>' : ''}
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            ${inbox.map(item => `
+                                <div onclick="app.openDirectChat('${item.user.email}')" class="bg-white p-5 rounded-3xl border border-slate-200 hover:border-delta-300 hover:shadow-md transition cursor-pointer">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-12 h-12 bg-slate-100 text-slate-600 rounded-2xl flex items-center justify-center text-xl shrink-0">
+                                            <i class="fa-solid fa-user-graduate"></i>
+                                        </div>
+                                        <div class="flex-grow min-w-0">
+                                            <h4 class="font-bold text-slate-800 text-sm truncate">${item.user.name}</h4>
+                                            <p class="text-[11px] text-slate-500 mt-0.5">طالب</p>
+                                            ${item.lastMsg ? `<p class="text-[11px] text-slate-400 mt-1 truncate">${item.lastMsg.text || '📷 صورة'}</p>` : '<p class="text-[11px] text-slate-400 mt-1">لم يبدأ المحادثة</p>'}
+                                        </div>
+                                        ${item.count > 0 ? `<span class="bg-delta-100 text-delta-700 text-[10px] font-bold px-2 py-1 rounded-lg">${item.count}</span>` : ''}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            getDMKey(email1, email2) {
+                return [email1, email2].sort().join('|||');
+            }
+
+            openDirectChat(otherEmail) {
+                const otherUser = this.registeredUsers.find(u => u.email === otherEmail);
+                if (!otherUser) return;
+                
+                const key = this.getDMKey(this.currentUser.email, otherEmail);
+                if (!this.directMessages[key]) this.directMessages[key] = [];
+                const msgs = this.directMessages[key];
+
+                const view = document.getElementById('main-view');
+                const roleLabel = otherUser.role === 'doctor' ? 'عضو هيئة تدريس' : (otherUser.role === 'staff' ? 'شئون طلاب' : 'طالب');
+                const roleIcon = otherUser.role === 'doctor' ? '👨‍🏫' : (otherUser.role === 'staff' ? '👔' : '🎓');
+                const isAdmin = this.currentUser.isSuperAdmin;
+
+                view.innerHTML = `
+                    <div class="fade-in">
+                        <div class="mb-4 flex items-center justify-between bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+                            <div class="flex items-center gap-3">
+                                <button onclick="app.switchTab('direct_messages')" class="w-8 h-8 flex items-center justify-center bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-lg transition">
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                                <div class="w-10 h-10 bg-delta-50 text-delta-600 rounded-xl flex items-center justify-center text-lg">
+                                    <i class="fa-solid fa-user-tie"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-base font-black text-slate-800">${otherUser.name}</h3>
+                                    <p class="text-[10px] text-slate-500">${roleIcon} ${roleLabel}</p>
+                                </div>
+                            </div>
+                            ${isAdmin && msgs.length > 0 ? `<button onclick="app.clearDMChat('${key}')" class="bg-red-50 text-red-600 hover:bg-red-100 text-xs font-bold px-3 py-1.5 rounded-lg transition flex items-center gap-1"><i class="fa-solid fa-trash"></i> مسح</button>` : ''}
+                        </div>
+
+                        <div class="bg-white rounded-3xl border border-slate-200 flex flex-col h-[550px] overflow-hidden shadow-md">
+                            <div class="flex-grow p-4 sm:p-6 overflow-y-auto custom-scrollbar flex flex-col gap-4 bg-[#f0f2f5]" id="dm-chat-box">
+                                ${msgs.length === 0 ? '<div class="text-center text-xs text-slate-400 mt-10 bg-white/50 p-4 rounded-xl max-w-xs mx-auto border border-slate-100 shadow-sm">ابدأ المحادثة الآن.</div>' : ''}
+                                ${msgs.map(msg => {
+                                    const isMe = msg.senderEmail === this.currentUser.email;
+                                    const canDelete = isAdmin || isMe;
+                                    return `
+                                    <div class="${isMe ? 'self-end' : 'self-start'} max-w-[85%] group relative">
+                                        <div class="text-[10px] text-slate-400 mb-1 px-1 flex items-center gap-1.5">
+                                            <span class="font-bold">${msg.senderName}</span>
+                                            <span>• ${msg.time}</span>
+                                            ${canDelete ? `<button onclick="app.deleteDMMessage('${key}', '${msg.id}')" class="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-red-500 ml-1" title="${isMe && !isAdmin ? 'حذف رسالتي' : 'حذف'}"><i class="fa-solid fa-trash"></i></button>` : ''}
+                                        </div>
+                                        <div class="p-3 text-sm ${isMe ? 'bg-delta-600 text-white chat-bubble-me' : 'bg-white border border-slate-200 text-slate-800 chat-bubble-other shadow-sm'}">
+                                            ${msg.imageUrl ? `<a href="${msg.imageUrl}" target="_blank"><img src="${msg.imageUrl}" class="chat-image mb-2 rounded-xl border ${isMe ? 'border-delta-400/50' : 'border-slate-100'} hover:opacity-90 transition cursor-pointer" alt="مرفق" /></a>` : ''}
+                                            <span class="leading-relaxed whitespace-pre-wrap">${msg.text}</span>
+                                        </div>
+                                    </div>
+                                `}).join('')}
+                            </div>
+                            <form onsubmit="app.sendDirectMessage(event, '${key}', '${otherEmail}')" class="p-4 bg-white border-t border-slate-200 flex gap-2 sm:gap-3 items-end">
+                                <textarea id="dm-msg-input" placeholder="اكتب رسالتك هنا..." required autocomplete="off" rows="1" class="flex-grow bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-delta-400 focus:bg-white transition shadow-inner resize-none overflow-hidden" oninput="this.style.height = '';this.style.height = this.scrollHeight + 'px'"></textarea>
+                                <button type="submit" class="bg-delta-600 text-white h-12 w-12 rounded-xl flex items-center justify-center hover:bg-delta-700 transition shadow-md hover:shadow-lg text-lg shrink-0">
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                `;
+                const box = document.getElementById('dm-chat-box');
+                if(box) box.scrollTop = box.scrollHeight;
+            }
+
+            sendDirectMessage(e, key, otherEmail) {
+                e.preventDefault();
+                const input = document.getElementById('dm-msg-input');
+                const text = input.value.trim();
+                if (!text) return;
+
+                if (!this.directMessages[key]) this.directMessages[key] = [];
+                this.directMessages[key].push({
+                    id: 'dm-' + Date.now(),
+                    senderEmail: this.currentUser.email,
+                    senderName: this.currentUser.name,
+                    text: text,
+                    time: new Date().toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })
+                });
+                this.saveDirectMessages();
+                this.openDirectChat(otherEmail);
+            }
+
+            deleteDMMessage(key, msgId) {
+                if (!this.directMessages[key]) return;
+                const msg = this.directMessages[key].find(m => m.id === msgId);
+                if (!msg) return;
+                const isMe = msg.senderEmail === this.currentUser.email;
+                const canDelete = this.currentUser.isSuperAdmin || isMe;
+                if (!canDelete) {
+                    this.showToast('يمكنك حذف رسائلك فقط');
+                    return;
+                }
+                if (!confirm('حذف هذه الرسالة؟')) return;
+                this.directMessages[key] = this.directMessages[key].filter(m => m.id !== msgId);
+                this.saveDirectMessages();
+                this.showToast('تم حذف الرسالة');
+                const parts = key.split('|||');
+                const otherEmail = parts[0] === this.currentUser.email ? parts[1] : parts[0];
+                this.openDirectChat(otherEmail);
+            }
+
+            clearDMChat(key) {
+                if (!this.currentUser.isSuperAdmin) return;
+                if (!confirm('مسح كل هذه المحادثة؟')) return;
+                this.directMessages[key] = [];
+                this.saveDirectMessages();
+                this.showToast('تم مسح المحادثة');
+                this.switchTab('direct_messages');
+            }
+
+            // ====== ADMIN PANEL ======
             renderAdminPanel() {
                 const view = document.getElementById('main-view');
                 if (!this.currentUser || !this.currentUser.isSuperAdmin) {
                     view.innerHTML = `<div class="text-center py-10 text-red-600 font-bold fade-in">غير مصرح لك بدخول هذه الصفحة.</div>`;
                     return;
                 }
-
                 view.innerHTML = `
                     <div class="fade-in max-w-2xl mx-auto bg-white rounded-3xl border border-slate-200 shadow-sm p-6 sm:p-8">
                         <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-6 border-b border-slate-100 pb-5">
@@ -1064,19 +1412,16 @@
                             </div>
                             <div>
                                 <h3 class="text-xl font-black text-slate-800">إدارة حسابات المنظومة</h3>
-                                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
-                                    من خلال هذه اللوحة، يحق للمدير الفائق فقط إنشاء حسابات رسمية لأعضاء هيئة التدريس وإداريي شئون الطلاب لتفعيل صلاحياتهم في المنظومة.
-                                </p>
+                                <p class="text-xs text-slate-500 mt-1 leading-relaxed">إنشاء حسابات لأعضاء هيئة التدريس وإداريي شئون الطلاب.</p>
                             </div>
                         </div>
-
                         <form onsubmit="app.submitAddOfficialUser(event)" class="space-y-4">
                             <div>
-                                <label class="block text-xs font-bold text-slate-700 mb-1.5">نوع الحساب والصلاحية</label>
+                                <label class="block text-xs font-bold text-slate-700 mb-1.5">نوع الحساب</label>
                                 <div class="relative">
                                     <select id="admin-new-role" class="w-full pl-3 pr-10 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-semibold focus:border-amber-500 focus:bg-white focus:outline-none transition appearance-none">
                                         <option value="doctor">عضو هيئة تدريس (دكتور)</option>
-                                        <option value="staff">موظف شئون طلاب / إداري</option>
+                                        <option value="staff">موظف شئون طلاب</option>
                                     </select>
                                     <i class="fa-solid fa-chevron-down absolute right-4 top-4 text-slate-400 text-xs pointer-events-none"></i>
                                 </div>
@@ -1086,18 +1431,16 @@
                                 <input type="text" id="admin-new-name" required placeholder="مثال: أ.د / أحمد محمود" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:border-amber-500 focus:bg-white focus:outline-none transition">
                             </div>
                             <div>
-                                <label class="block text-xs font-bold text-slate-700 mb-1.5">البريد الإلكتروني الجامعي</label>
+                                <label class="block text-xs font-bold text-slate-700 mb-1.5">البريد الإلكتروني</label>
                                 <input type="email" id="admin-new-email" required placeholder="dr.name@delta.edu.eg" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:border-amber-500 focus:bg-white focus:outline-none transition text-left" dir="ltr">
                             </div>
                             <div>
-                                <label class="block text-xs font-bold text-slate-700 mb-1.5">كلمة المرور المبدئية</label>
-                                <input type="text" id="admin-new-pass" required placeholder="كلمة المرور للدخول الأول" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:border-amber-500 focus:bg-white focus:outline-none transition text-left" dir="ltr">
+                                <label class="block text-xs font-bold text-slate-700 mb-1.5">كلمة المرور</label>
+                                <input type="text" id="admin-new-pass" required placeholder="كلمة المرور" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:border-amber-500 focus:bg-white focus:outline-none transition text-left" dir="ltr">
                             </div>
-                            
-                            <div id="admin-error" class="hidden text-xs text-red-600 bg-red-50 p-3 rounded-xl border border-red-100 font-semibold flex items-center gap-2"></div>
-
+                            <div id="admin-error" class="hidden text-xs text-red-600 bg-red-50 p-3 rounded-xl border border-red-100 font-semibold"></div>
                             <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold py-3.5 rounded-xl transition shadow-md shadow-amber-200/50 text-sm mt-2 flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-user-plus"></i> إنشاء وتفعيل الحساب
+                                <i class="fa-solid fa-user-plus"></i> إنشاء الحساب
                             </button>
                         </form>
                     </div>
@@ -1113,62 +1456,17 @@
                 const errBox = document.getElementById('admin-error');
 
                 if (this.registeredUsers.some(u => u.email === email)) {
-                    errBox.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> هذا البريد مسجل مسبقاً في النظام.';
+                    errBox.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> هذا البريد مسجل مسبقاً.';
                     errBox.classList.remove('hidden');
                     return;
                 }
-
-                this.registeredUsers.push({
-                    email: email,
-                    password: pass,
-                    name: name,
-                    role: role,
-                    divisionId: 'all',
-                    isSuperAdmin: false
-                });
-                
+                this.registeredUsers.push({ email, password: pass, name, role, divisionId: 'all', isSuperAdmin: false });
                 this.saveRegisteredAccounts();
                 errBox.classList.add('hidden');
-                
                 document.getElementById('admin-new-name').value = '';
                 document.getElementById('admin-new-email').value = '';
                 document.getElementById('admin-new-pass').value = '';
-                
-                this.showToast(`تم إنشاء حساب ${role === 'doctor' ? 'الدكتور' : 'الموظف'} بنجاح`);
-            }
-
-            openAddSubjectModal() {
-                const body = `
-                    <h3 class="text-lg font-black text-slate-800 mb-4">إضافة مادة جديدة</h3>
-                    <form onsubmit="app.submitAddSubject(event)" class="space-y-3">
-                        <input type="text" id="new-sub-name" placeholder="اسم المادة" required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm">
-                        <input type="text" id="new-sub-code" placeholder="كود المادة (اختياري)" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm">
-                        <select id="new-sub-div" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm">
-                            ${this.divisions.map(d => `<option value="${d.id}">${d.name}</option>`).join('')}
-                        </select>
-                        <button type="submit" class="w-full bg-delta-600 text-white font-bold py-3 rounded-xl mt-2 text-sm">حفظ المادة</button>
-                    </form>
-                `;
-                document.getElementById('generic-modal-body').innerHTML = body;
-                document.getElementById('generic-modal').classList.remove('hidden');
-            }
-
-            submitAddSubject(e) {
-                e.preventDefault();
-                const newSub = {
-                    id: 'sub-' + Date.now(),
-                    name: document.getElementById('new-sub-name').value,
-                    code: document.getElementById('new-sub-code').value || '-',
-                    divisionId: document.getElementById('new-sub-div').value,
-                    doctorName: this.currentUser.name,
-                    lectures: [],
-                    subjectChat: []
-                };
-                this.subjects.push(newSub);
-                this.saveSubjects();
-                this.closeGenericModal();
-                this.showToast('تم إضافة المادة بنجاح');
-                this.renderHome();
+                this.showToast(`تم إنشاء الحساب بنجاح`);
             }
 
             openAddAnnouncementModal() {
@@ -1181,8 +1479,8 @@
                             <option value="جداول ومحاضرات">جداول ومحاضرات</option>
                             <option value="أنشطة طلابية">أنشطة طلابية</option>
                         </select>
-                        <textarea id="new-ann-content" placeholder="نص الإعلان التفصيلي..." required rows="4" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm"></textarea>
-                        <input type="text" id="new-ann-url" placeholder="رابط درايف للمرفقات (اختياري)" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-left" dir="ltr">
+                        <textarea id="new-ann-content" placeholder="نص الإعلان..." required rows="4" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm"></textarea>
+                        <input type="text" id="new-ann-url" placeholder="رابط مرفقات (اختياري)" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-left" dir="ltr">
                         <button type="submit" class="w-full bg-amber-500 text-white font-bold py-3 rounded-xl mt-2 text-sm shadow-md">نشر الإعلان</button>
                     </form>
                 `;
@@ -1199,6 +1497,7 @@
                     content: document.getElementById('new-ann-content').value,
                     driveUrl: document.getElementById('new-ann-url').value,
                     author: this.currentUser.name,
+                    authorEmail: this.currentUser.email,
                     date: new Date().toISOString().split('T')[0]
                 };
                 this.announcements.push(newAnn);
@@ -1208,41 +1507,16 @@
                 this.renderAnnouncements();
             }
 
-            addLecture(subjectId) {
-                // Mock prompt for simplicity in single file
-                const title = prompt("عنوان المحاضرة:");
-                if(!title) return;
-                const desc = prompt("وصف مختصر:");
-                
-                const sub = this.subjects.find(s => s.id === subjectId);
-                sub.lectures.push({
-                    id: 'lec-' + Date.now(),
-                    title: title,
-                    desc: desc || '-',
-                    fileName: 'Lecture_Material.pdf',
-                    driveUrl: this.DRIVE_FOLDER_URL,
-                    date: new Date().toISOString().split('T')[0]
-                });
-                this.saveSubjects();
-                this.showToast('تم إضافة المحاضرة');
-                this.renderSubjectDetails(subjectId);
-            }
-
-            closeGenericModal() {
-                document.getElementById('generic-modal').classList.add('hidden');
-            }
+            closeGenericModal() { document.getElementById('generic-modal').classList.add('hidden'); }
 
             showToast(msg) {
                 const toast = document.getElementById('toast');
                 document.getElementById('toast-message').innerText = msg;
                 toast.classList.remove('translate-y-20', 'opacity-0');
-                setTimeout(() => {
-                    toast.classList.add('translate-y-20', 'opacity-0');
-                }, 3000);
+                setTimeout(() => { toast.classList.add('translate-y-20', 'opacity-0'); }, 3000);
             }
         }
 
-        // Initialize App
         const app = new DeltaApp();
     </script>
 </body>
